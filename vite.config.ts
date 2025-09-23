@@ -7,8 +7,36 @@ export default defineConfig({
   plugins: [
     react(),
     svgr({
-      // Simplified SVGR options
+      // Simple, reliable SVGR configuration for Figma SVGs
       include: '**/*.svg?react',
+      svgrOptions: {
+        icon: true, // Optimize for icons
+        replaceAttrValues: {
+          '#000000': 'currentColor',
+          '#000': 'currentColor',
+          'black': 'currentColor',
+        },
+        svgProps: {
+          fill: 'currentColor',
+        },
+        // Basic SVGO optimization
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'preset-default',
+              params: {
+                overrides: {
+                  removeViewBox: false, // Keep viewBox for responsive scaling
+                  removeDesc: true, // Remove Figma descriptions
+                  removeMetadata: true, // Remove Figma metadata
+                  cleanupIds: true, // Remove Figma IDs
+                },
+              },
+            },
+          ],
+        },
+      },
     }),
   ],
   resolve: {

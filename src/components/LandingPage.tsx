@@ -209,20 +209,7 @@ function EarningsCalculator() {
           </svg>
         </div>
 
-        {/* SVGR Demo Section - Temporarily commented out for debugging */}
-        {/* 
-        <div className="absolute left-[900px] top-[3006px] flex gap-4">
-          <div className="size-[30px]">
-            <PlusIcon className="w-full h-full" />
-          </div>
-          <div className="size-[35px]">
-            <ArrowIcon className="w-full h-full" />
-          </div>
-          <div className="size-[34px]">
-            <MenuLines className="w-full h-full" />
-          </div>
-        </div>
-        */}
+      
       </div>
     </div>
   );
@@ -232,7 +219,7 @@ function EarningsCalculator() {
 export default function LandingPage() {
   return (
     <div className="bg-[#121212] relative size-full overflow-x-hidden overflow-y-visible min-h-screen">
-      <HeroSection />
+
       
       {/* Framework Section */}
       <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[375px] not-italic text-[78.3px] text-white top-[1166px] tracking-[-2.349px] w-[783px]">
