@@ -221,7 +221,7 @@ export default function LandingPage() {
 
       
       {/* Navigation Arrows - positioned between framework and profile sections */}
-      <div className="absolute top-[1266px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
+      <div className="absolute top-[1260px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
         {/* Left Arrow */}
         <button className="w-[50px] h-[50px] bg-[rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.3)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[rgba(0,0,0,0.8)] hover:border-[rgba(255,255,255,0.5)] transition-all duration-300 group">
           <svg className="w-6 h-6 text-white rotate-180 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,15 +244,36 @@ export default function LandingPage() {
       
       {/* Framework Cards */}
       <div className="absolute content-stretch flex gap-[23px] items-center justify-start top-[1363px] translate-x-[-50%]" style={{ left: "calc(50% + 10.5px)" }}>
+        {/* Left Side Card */}
         <div className="h-[347px] relative shrink-0 w-[314px]">
-          <div className="absolute bg-[#c4c4c4] blur-[6.75px] filter h-[347px] left-0 rounded-[30px] top-0 w-[314px]" />
+          <div className="absolute bg-[#c4c4c4] h-[347px] left-0 rounded-[30px] top-0 w-[314px]" />
+          {/* Bottom corners blur effect */}
+          <div className="absolute bottom-0 left-0 w-[314px] h-[200px] rounded-b-[30px] bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none  blur-[80px] filter" />
         </div>
         
+        {/* Center Card with Profile Image */}
         <div className="h-[459px] relative shrink-0 w-[415px]">
-          <div className="absolute bg-gradient-to-l from-[#252525] h-[459px] left-0 rounded-[30px] to-[#252525] top-0 via-[51.923%] via-[rgba(0,0,0,0)] w-[415px]" />
+          {/* Full Background Image Container */}
+          <div className="absolute h-[459px] left-0 rounded-[30px] top-0 w-[415px] overflow-hidden">
+            <img 
+              src="/About Us Image Background.png" 
+              alt="Background" 
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay for better contrast */}
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
           
-          <div className="absolute bg-gradient-to-br from-[#333] to-[#555] h-[220px] left-[37px] rounded-[41px] top-[42px] w-[221px]">
-            <div aria-hidden="true" className="absolute border-2 border-black border-solid inset-0 pointer-events-none rounded-[41px] shadow-[0px_4px_28.3px_0px_rgba(0,0,0,0.25)]" />
+          {/* Original gradient overlay for additional depth */}
+          <div className="absolute bg-gradient-to-l from-[rgba(37,37,37,0.6)] h-[459px] left-0 rounded-[30px] to-[rgba(37,37,37,0.6)] top-0 via-[51.923%] via-[rgba(0,0,0,0.2)] w-[415px] z-10" />
+          
+          {/* White Profile Card Container */}
+          <div className="absolute left-[5px] top-[10px] w-[341px] h-[300px] flex items-center justify-center p-4 z-20">
+            <img 
+              src="/image 1.png" 
+              alt="Profile card showcase" 
+              className="max-w-full max-h-full object-contain rounded-[20px] "
+            />
           </div>
           
           <div className="absolute bg-clip-text bg-gradient-to-r capitalize font-['Staatliches:Regular',_sans-serif] from-[#d99c00] left-[37px] not-italic text-[40px] to-[#ffaa00] top-[287px] w-[318px]" style={{ WebkitTextFillColor: "transparent" }}>
@@ -264,8 +285,11 @@ export default function LandingPage() {
           </div>
         </div>
         
+        {/* Right Side Card */}
         <div className="h-[347px] relative shrink-0 w-[342px]">
-          <div className="absolute bg-[#c4c4c4] blur-[10.5px] filter h-[347px] left-0 rounded-[30px] top-0 w-[342px]" />
+          <div className="absolute bg-[#c4c4c4] h-[347px] left-0 rounded-[30px] top-0 w-[342px]" />
+          {/* Bottom corners blur effect */}
+          <div className="absolute bottom-0 left-0 w-[342px] h-[200px] rounded-b-[30px] bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none blur-[80px] filter" />
         </div>
       </div>
 
