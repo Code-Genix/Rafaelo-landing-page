@@ -220,8 +220,25 @@ export default function LandingPage() {
       <HeroSection />
 
       
+      {/* Navigation Arrows - positioned between framework and profile sections */}
+      <div className="absolute top-[1000px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
+        {/* Left Arrow */}
+        <button className="w-[50px] h-[50px] bg-[rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.3)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[rgba(0,0,0,0.8)] hover:border-[rgba(255,255,255,0.5)] transition-all duration-300 group">
+          <svg className="w-6 h-6 text-white rotate-180 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        {/* Right Arrow */}
+        <button className="w-[50px] h-[50px] bg-[#ffb700] border border-[rgba(255,183,0,0.5)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#e6a20b] hover:border-[rgba(230,162,11,0.8)] transition-all duration-300 group">
+          <svg className="w-6 h-6 text-black group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
       {/* Framework Section */}
-      <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[375px] not-italic text-[78.3px] text-white top-[1166px] tracking-[-2.349px] w-[783px]">
+      <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[375px] not-italic text-[50px] text-white top-[1166px] tracking-[-2.349px] w-[783px]">
         <p className="leading-[1.32]">READY-TO-WORK FRAMEWORK</p>
       </div>
       
