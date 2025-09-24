@@ -16,12 +16,12 @@ function Navigation() {
     <div className="absolute content-stretch flex items-center justify-between left-[115px] top-[34px] w-[1289px] z-50">
       <div className="content-stretch flex gap-[23px] items-center justify-start relative shrink-0">
         <div className="bg-[#d99c00] box-border content-stretch flex gap-[15px] items-center justify-start pl-[5px] pr-[15px] py-[5px] relative rounded-[24px] shrink-0 cursor-pointer hover:bg-[#e6a20b] transition-colors">
-          <div className="relative shrink-0 size-[30px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 30">
-              <circle cx="15" cy="15" fill="white" r="15" />
-              <path d={svgPaths.p31b1f500} stroke="#121212" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
+        <div className="relative shrink-0 size-[30px]">
+          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 30">
+            <circle cx="15" cy="15" fill="white" r="15" />
+            <path d="M12 10l6 5-6 5" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
+          </svg>
+        </div>
           <div className="capitalize font-dm-sans font-normal leading-[0] relative shrink-0 text-[16px] text-nowrap text-white">
             <p className="leading-[1.32] whitespace-pre">Get the access</p>
           </div>
@@ -44,7 +44,7 @@ function Navigation() {
         <div className="relative shrink-0 size-[30px]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 30">
             <circle cx="15" cy="15" fill="#FFBB00" r="15" />
-            <path d={svgPaths.p31b1f500} stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M12 10l6 5-6 5" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
           </svg>
         </div>
         <div className="capitalize font-['DM_Sans:Regular',_sans-serif] font-normal leading-[0] relative shrink-0 text-[16px] text-nowrap text-white" style={{ fontVariationSettings: "'opsz' 14" }}>
@@ -123,10 +123,7 @@ function HeroSection() {
         <div className="relative shrink-0 size-[34.99px]">
           <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 35 35">
             <circle cx="17.4953" cy="17.4953" fill="black" r="16.9121" stroke="black" strokeWidth="1.16635" />
-            <g>
-              <path d={svgPaths.p2f3d6d00} fill="white" />
-              <path d={svgPaths.p25e49b00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.16635" />
-            </g>
+            <path d="M14 12l6 5.5-6 5.5" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
           </svg>
         </div>
       </div>
@@ -219,6 +216,8 @@ function EarningsCalculator() {
 export default function LandingPage() {
   return (
     <div className="bg-[#121212] relative size-full overflow-x-hidden overflow-y-visible min-h-screen">
+      {/* Hero Section */}
+      <HeroSection />
 
       
       {/* Framework Section */}
@@ -474,26 +473,37 @@ export default function LandingPage() {
 
       
       
-      {/* White Profile Card - positioned behind yellow banner */}
-      <div className="absolute left-[940px] top-[200px] z-10 overflow-visible">
+      {/* Main Profile Image - positioned to match the image */}
+      <div className="absolute left-[890px] top-[200px] z-20 overflow-visible">
         <img 
           src="/image 1.png" 
-          alt="Profile image" 
-          className="w-[380px] h-auto object-contain rounded-[30px] shadow-[0px_20px_60px_rgba(0,0,0,0.3)]"
+          alt="Profile showcase" 
+          className="w-[380px] h-auto object-contain rounded-[20px] shadow-[0px_20px_60px_rgba(0,0,0,0.3)]"
         />
       </div>
 
-      {/* Yellow Banner - positioned at bottom of white card */}
-      <div className="absolute bg-[#ffb700] left-[900px] rounded-[30px] top-[450px] w-[460px] h-[100px] z-30 overflow-visible shadow-[0px_15px_50px_rgba(0,0,0,0.4)]">
-        <div aria-hidden="true" className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[30px] shadow-[0px_8px_40px_rgba(0,0,0,0.6)]" />
-      </div>
-      
-      <div className="absolute font-badrock leading-[0] left-[900px] not-italic text-[#181818] text-[48px] top-[450px] tracking-[1.2px] uppercase w-[460px] h-[100px] flex items-center justify-center z-30">
-        <p className="leading-[0.9] text-center font-bold">WAY TO $50K/MONTH</p>
+      {/* Yellow Banner - positioned at bottom right */}
+      <div className="absolute bg-[#ffb700] left-[850px] rounded-[30px] top-[390px] w-[480px] h-[100px] z-30 overflow-visible shadow-[0px_15px_50px_rgba(0,0,0,0.4)] transform rotate-[-2deg]">
+        <div aria-hidden="true" className="absolute border-2 border-black border-solid inset-0 pointer-events-none rounded-[30px] shadow-[0px_8px_40px_rgba(0,0,0,0.6)]" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <p className="font-['Staatliches:Regular',_sans-serif] text-[42px] text-black font-bold leading-[0.9] text-center tracking-[1px] uppercase">
+            WAY TO $50K/MONTH
+          </p>
+        </div>
       </div>
 
-      <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[1012px] not-italic text-[62.036px] text-white top-[777.39px] tracking-[1.8611px] uppercase w-[500px] z-10">
-        <p className="leading-[0.88] drop-shadow-lg">+1000 MEMBERS</p>
+      {/* Members Count with Stars */}
+      <div className="absolute right-[100px] top-[700px] z-10 text-right">
+        <div className="font-['Staatliches:Regular',_sans-serif] text-[72px] text-white font-bold leading-[0.8] tracking-[2px] uppercase drop-shadow-lg">
+          +1000 MEMBERS
+        </div>
+        <div className="flex justify-end gap-1 mt-2">
+          {[...Array(5)].map((_, i) => (
+            <svg key={i} className="w-8 h-8 text-yellow-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ))}
+        </div>
       </div>
     </div>
   );
