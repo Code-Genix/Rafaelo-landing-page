@@ -474,7 +474,7 @@ export default function LandingPage() {
       
       
       {/* Main Profile Image - positioned to match the image */}
-      <div className="absolute left-[890px] top-[200px] z-20 overflow-visible">
+      <div className="absolute left-[990px] top-[200px] z-20 overflow-visible">
         <img 
           src="/image 1.png" 
           alt="Profile showcase" 
@@ -482,11 +482,11 @@ export default function LandingPage() {
         />
       </div>
 
-      {/* Yellow Banner - positioned at bottom right */}
-      <div className="absolute bg-[#ffb700] left-[850px] rounded-[30px] top-[390px] w-[480px] h-[100px] z-30 overflow-visible shadow-[0px_15px_50px_rgba(0,0,0,0.4)] transform rotate-[-2deg]">
-        <div aria-hidden="true" className="absolute border-2 border-black border-solid inset-0 pointer-events-none rounded-[30px] shadow-[0px_8px_40px_rgba(0,0,0,0.6)]" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="font-['Staatliches:Regular',_sans-serif] text-[42px] text-black font-bold leading-[0.9] text-center tracking-[1px] uppercase">
+      {/* Yellow Banner - positioned on top of the card profile */}
+      <div className="absolute bg-[#ffb700] left-[955px] rounded-[25px] top-[52%] w-[450px] h-[100px] z-30 overflow-visible shadow-[0px_10px_30px_rgba(0,0,0,0.3)]">
+        <div aria-hidden="true" className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[25px]" />
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <p className="font-['Staatliches:Regular',_sans-serif] text-[44px] text-black font-bold leading-[1] text-center tracking-[0.5px] uppercase">
             WAY TO $50K/MONTH
           </p>
         </div>
