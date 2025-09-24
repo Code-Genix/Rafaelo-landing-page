@@ -293,77 +293,192 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Portfolio Section */}
-      <div className="absolute capitalize font-cook-conthic leading-[0] left-[109px] not-italic text-[76.947px] text-white top-[2192px] w-[554px]">
-        <p className="font-['Staatliches:Regular',_sans-serif] leading-[0.84]">
-          <span>Followers = </span>
-          <span className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00]" style={{ WebkitTextFillColor: "transparent" }}>
-            clout
-          </span>
-          <span>. Clout = </span>
-          <span className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00]" style={{ WebkitTextFillColor: "transparent" }}>
-            cash
-          </span>
-          . Here's the game
-        </p>
-      </div>
-
-      <div className="absolute capitalize font-['Staatliches:Regular',_sans-serif] leading-[0] left-[466px] not-italic text-[69.799px] text-white top-[2865px] w-[641px]">
-        <p className="leading-[0.84]">Estimate your Earnings</p>
-      </div>
-
-      {/* Earnings Calculator */}
-      <EarningsCalculator />
-
-      {/* Course Modules Section */}
-      <div className="absolute contents left-[167px] top-[3706px]" id="modules">
-        {/* Module 1 - Active */}
-        <div className="absolute h-0 left-[168px] top-[3898px] w-[1175px]">
-          <div className="absolute bottom-[-1px] left-0 right-0 top-[-1px]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1175 2">
-              <path d="M0 1H1175" stroke="#E6A20B" strokeWidth="2" />
-            </svg>
+      {/* Portfolio Section - Refactored */}
+      <div className="absolute left-0 top-[1900px] w-full h-[1200px] ">
+        {/* Background Image with Dark Overlay */}
+        <div className="absolute inset-0">
+          <img 
+            src="/image 3.png" 
+            alt="Portfolio background" 
+            className="w-full h-full object-cover scale-110"
+          />
+        </div>
+        
+        {/* Content Container */}
+        <div className="relative z-10 flex items-center justify-between h-full px-8 md:px-16 lg:px-24">
+          {/* Left Side - Text and Button */}
+          <div className="flex flex-col items-start max-w-lg">
+            {/* Main Headline */}
+            <h2 className="font-['Staatliches:Regular',_sans-serif] text-3xl md:text-4xl font-bold uppercase leading-tight text-white mb-8">
+              <span>FOLLOWERS = </span>
+              <span className="text-[#FFC20E]">CLOUT.</span>
+              <br />
+              <span>CLOUT = </span>
+              <span className="text-[#FFC20E]">CASH.</span>
+              <br />
+              <span>HERE'S THE GAME</span>
+            </h2>
+            
+            {/* Yellow Button */}
+            <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm md:text-base px-6 py-3 rounded-full transition-colors duration-300">
+              Discover Your Earnings
+            </button>
           </div>
-        </div>
-        
-        <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[228px] not-italic text-[#e6a20b] text-[128px] text-nowrap top-[3706px]">
-          <p className="leading-[normal] whitespace-pre">MODULE 1</p>
-        </div>
-        
-        <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[167px] not-italic text-[#e6a20b] text-[40px] text-nowrap top-[3720px]">
-          <p className="leading-[1.15] whitespace-pre">01</p>
-        </div>
-        
-        <div className="absolute capitalize left-[682px] text-[#e6a20b] top-[3732.88px] w-[360px] font-['Poppins:Regular',_sans-serif] text-[24px] tracking-[-0.48px]">
-          <p className="leading-[29px]">Content Creation Strategy</p>
-        </div>
-
-        <div className="absolute bg-gradient-to-br from-[#444] to-[#666] h-[158px] left-[1086px] rounded-[32px] top-[3708px] w-[257px]" />
-
-        {/* Additional Modules */}
-        {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((moduleNumber, index) => (
-          <div key={moduleNumber} className={`absolute contents left-[167px] top-[${3706 + (index + 1) * 247}px]`}>
-            <div className="absolute h-0 left-[168px] w-[1175px]" style={{ top: `${3898 + (index + 1) * 247}px` }}>
-              <div className="absolute bottom-[-1px] left-0 right-0 top-[-1px]">
-                <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 1175 2">
-                  <path d="M0 1H1175" stroke="white" strokeOpacity="0.8" strokeWidth="2" />
+          
+          {/* Right Side - Follower Tiers */}
+          <div className="flex flex-col space-y-6">
+            {/* Header Icons */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2">
+                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                </svg>
+              </div>
+              <div className="flex items-center space-x-2">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
               </div>
             </div>
             
-            <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[228px] not-italic text-[128px] text-[rgba(255,255,255,0.8)] text-nowrap" style={{ top: `${3706 + (index + 1) * 247}px` }}>
-              <p className="leading-[normal] whitespace-pre">MODULE {moduleNumber}</p>
+            {/* 10K Tier */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-white text-lg md:text-xl font-bold">10K</span>
+              </div>
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-[#FFC20E] text-lg md:text-xl font-bold">$1 000 / MONTH</span>
             </div>
             
-            <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[167px] not-italic text-[40px] text-[rgba(255,255,255,0.8)] text-nowrap" style={{ top: `${3720 + (index + 1) * 247}px` }}>
-              <p className="leading-[1.15] whitespace-pre">{moduleNumber.toString().padStart(2, '0')}</p>
+            {/* 100K Tier */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-white text-lg md:text-xl font-bold">100K</span>
+              </div>
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-[#FFC20E] text-lg md:text-xl font-bold">$5 000 / MONTH</span>
             </div>
             
-            <div className="absolute capitalize left-[682px] text-white w-[360px] font-['Poppins:Regular',_sans-serif] text-[24px] tracking-[-0.48px]" style={{ top: `${3732.88 + (index + 1) * 247}px` }}>
-              <p className="leading-[29px]">Advanced strategies and techniques</p>
+            {/* 1M Tier */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-white text-lg md:text-xl font-bold">1M</span>
+              </div>
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-[#FFC20E] text-lg md:text-xl font-bold">$20 000 / MONTH</span>
+            </div>
+            
+            {/* 8M Tier */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-white text-lg md:text-xl font-bold">8M</span>
+              </div>
+              <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span className="text-[#FFC20E] text-lg md:text-xl font-bold">$100 000+ / MONTH</span>
             </div>
           </div>
-        ))}
+        </div>
+      </div>
+
+      {/* New Earnings Calculator Section */}
+      <div className="absolute left-0 top-[2800px] w-full h-[700px] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/Vector 3.png" 
+            alt="Earnings background" 
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-full">
+          <div className="flex flex-col items-center space-y-12">
+          {/* Header */}
+          <div className="text-center">
+            <h2 className="font-['Staatliches:Regular',_sans-serif] text-4xl md:text-5xl font-bold uppercase text-white tracking-wider">
+              ESTIMATE YOUR EARNINGS
+            </h2>
+          </div>
+          
+          {/* Two Cards Container */}
+          <div className="flex space-x-6">
+            {/* Followers/Views Card */}
+            <div className="bg-[#1a1a1a] border border-[#333] rounded-[20px] p-8 w-[280px] h-[200px] flex flex-col items-center justify-center">
+              <div className="mb-4">
+                <svg className="w-10 h-10 text-white mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+                </svg>
+              </div>
+              <h3 className="text-white text-lg font-medium mb-2">Followers/Views</h3>
+              <p className="text-white text-3xl font-bold">10 000</p>
+            </div>
+
+            {/* Arrow */}
+            <div className="flex items-center">
+              <svg className="w-8 h-8 text-[#FFC20E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+
+            {/* Est. Income Card */}
+            <div className="bg-[#1a1a1a] border border-[#FFC20E] rounded-[20px] p-8 w-[280px] h-[200px] flex flex-col items-center justify-center">
+              <div className="mb-4">
+                <svg className="w-10 h-10 text-white mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-white text-lg font-medium mb-2">Est. Income</h3>
+              <p className="text-[#FFC20E] text-3xl font-bold">10 000</p>
+            </div>
+          </div>
+
+          {/* Join Button */}
+          <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-lg px-10 py-4 rounded-full transition-colors duration-300 shadow-lg">
+            Join Now To Start Earning
+          </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Course Modules Section - Redesigned */}
+      <div className="absolute left-0 top-[3600px] w-full bg-[#121212] py-16" id="modules">
+        <div className="max-w-6xl mx-auto px-8">
+          
+          {/* Module 1 - Highlighted */}
+          <div className="flex items-center justify-between mb-8 pb-8 border-b-2 border-[#FFC20E]">
+            <div className="flex items-center space-x-6">
+              <span className="text-[#FFC20E] text-2xl font-bold">01</span>
+              <h3 className="text-[#FFC20E] text-6xl font-['Staatliches:Regular',_sans-serif] uppercase">MODULE 1</h3>
+              <p className="text-[#FFC20E] text-lg ml-8">Orem Ipsum Dolor Sit Amet,<br/>Consectetur Adipiscing Elit</p>
+            </div>
+            <div className="w-32 h-20 bg-gradient-to-br from-[#444] to-[#666] rounded-lg overflow-hidden">
+              <img src="/Hero Banner Image.png" alt="Module 1" className="w-full h-full object-cover" />
+            </div>
+          </div>
+
+          {/* Modules 2-10 */}
+          {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((moduleNumber) => (
+            <div key={moduleNumber} className="flex items-center justify-between mb-8 pb-8 border-b border-gray-600">
+              <div className="flex items-center space-x-6">
+                <span className="text-white text-2xl font-bold">{moduleNumber.toString().padStart(2, '0')}</span>
+                <h3 className="text-white text-6xl font-['Staatliches:Regular',_sans-serif] uppercase">MODULE {moduleNumber}</h3>
+                <p className="text-white text-lg ml-8">Orem Ipsum Dolor Sit Amet,<br/>Consectetur Adipiscing Elit</p>
+              </div>
+            </div>
+          ))}
+          
+        </div>
       </div>
 
       {/* Community Section */}
@@ -507,8 +622,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Background Image with gradient overlay */}
-      <div className="absolute bg-gradient-to-b from-[#121212] via-transparent to-[#121212] h-[904px] left-[5px] top-[1867px] w-[1507px]" />
 
       {/* Additional decorative elements */}
 
@@ -549,3 +662,4 @@ export default function LandingPage() {
     </div>
   );
 }
+
