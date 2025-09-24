@@ -1,27 +1,17 @@
-import { useState } from 'react';
 import svgPaths from "../imports/svg-gfdvud67i5";
-
-// Import SVG components using SVGR - Temporarily commented out for debugging
-// import PlusIcon from '../assets/icons/plus-icon.svg?react';
-// import ArrowIcon from '../assets/icons/arrow-icon.svg?react';
-// import MenuLines from '../assets/icons/menu-lines.svg?react';
 
 // Navigation Component
 function Navigation() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Temporarily using these variables to avoid TypeScript errors
-  console.log('Menu open state:', isMenuOpen, setIsMenuOpen);
-
   return (
     <div className="absolute content-stretch flex items-center justify-between left-[115px] top-[34px] w-[1289px] z-50">
       <div className="content-stretch flex gap-[23px] items-center justify-start relative shrink-0">
         <div className="bg-[#d99c00] box-border content-stretch flex gap-[15px] items-center justify-start pl-[5px] pr-[15px] py-[5px] relative rounded-[24px] shrink-0 cursor-pointer hover:bg-[#e6a20b] transition-colors">
-        <div className="relative shrink-0 size-[30px]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 30">
-            <circle cx="15" cy="15" fill="white" r="15" />
-            <path d="M12 10l6 5-6 5" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
-          </svg>
-        </div>
+          <div className="relative shrink-0 size-[30px]">
+            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 30 30">
+              <circle cx="15" cy="15" fill="white" r="15" />
+              <path d="M12 10l6 5-6 5" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
+            </svg>
+          </div>
           <div className="capitalize font-dm-sans font-normal leading-[0] relative shrink-0 text-[16px] text-nowrap text-white">
             <p className="leading-[1.32] whitespace-pre">Get the access</p>
           </div>
@@ -131,111 +121,13 @@ function HeroSection() {
   );
 }
 
-// Interactive Earnings Calculator Component
-function EarningsCalculator() {
-  const [followers, setFollowers] = useState(10000);
-  const [estimatedEarnings, setEstimatedEarnings] = useState(1000);
-
-  const calculateEarnings = (followerCount: number) => {
-    if (followerCount >= 8000000) return 100000;
-    if (followerCount >= 1000000) return 20000;
-    if (followerCount >= 100000) return 5000;
-    if (followerCount >= 10000) return 1000;
-    return Math.floor(followerCount * 0.1);
-  };
-
-  const handleFollowerChange = (value: number) => {
-    setFollowers(value);
-    setEstimatedEarnings(calculateEarnings(value));
-  };
-
-  return (
-    <div className="relative py-20">
-      <div className="absolute contents left-[403px] top-[2964px]">
-        <div className="absolute backdrop-blur-[37px] backdrop-filter bg-[rgba(185,169,201,0.05)] h-[392px] rounded-[20px] top-[2964px] translate-x-[-50%] w-[350px]" style={{ left: "calc(50% - 178px)" }}>
-          <div aria-hidden="true" className="absolute border-[0.5px] border-[rgba(255,255,255,0.6)] border-solid inset-0 pointer-events-none rounded-[20px]" />
-        </div>
-        
-        <div className="absolute backdrop-blur-[37px] backdrop-filter bg-[rgba(32,32,32,0.16)] left-[434px] rounded-[13px] size-[57.906px] top-[3000px]">
-          <div aria-hidden="true" className="absolute border-[0.2px] border-solid border-white inset-0 pointer-events-none rounded-[13px] shadow-[0px_4px_44px_0px_rgba(0,0,0,0.59)]" />
-        </div>
-        
-        <div className="absolute left-[446px] overflow-clip size-[34px] top-[3014px]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 34 30">
-            <path d={svgPaths.p30e80100} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2" />
-            <path d={svgPaths.p2bf2c00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2" />
-            <path d={svgPaths.p2eec6f00} stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10" strokeWidth="2" />
-          </svg>
-        </div>
-        
-        <div className="absolute capitalize font-['Poppins:Regular',_sans-serif] leading-[0] left-[434px] not-italic text-[24px] text-white top-[3126px] tracking-[-0.48px] w-[267px]">
-          <p className="leading-[44px]">{followers.toLocaleString()} followers/views</p>
-        </div>
-        
-        <input 
-          type="range" 
-          min="1000" 
-          max="10000000" 
-          value={followers}
-          onChange={(e) => handleFollowerChange(parseInt(e.target.value))}
-          className="absolute left-[434px] top-[3080px] w-[200px] accent-[#e9a200]"
-        />
-      </div>
-
-      <div className="absolute contents left-[780px] top-[2964px]">
-        <div className="absolute backdrop-blur-[37px] backdrop-filter bg-[rgba(185,169,201,0.05)] h-[392px] rounded-[20px] top-[2964px] translate-x-[-50%] w-[350px]" style={{ left: "calc(50% + 199px)" }}>
-          <div aria-hidden="true" className="absolute border-[#e9a200] border-[0.5px] border-solid inset-0 pointer-events-none rounded-[20px]" />
-        </div>
-        
-        <div className="absolute capitalize font-['Poppins:Regular',_sans-serif] leading-[0] left-[819px] not-italic text-[24px] text-white top-[3122px] tracking-[-0.48px] w-[267px]">
-          <p className="leading-[44px]">est. income</p>
-        </div>
-        
-        <div className="absolute font-badrock leading-[0] left-[824px] not-italic text-[#e9a200] text-[63.88px] top-[3216px] tracking-[1.9164px] uppercase w-[131px]">
-          <p className="leading-[0.88]">${estimatedEarnings.toLocaleString()}</p>
-        </div>
-        
-        <div className="absolute backdrop-blur-[37px] backdrop-filter bg-[rgba(0,0,0,0.16)] left-[819px] rounded-[13px] size-[57.906px] top-[3000px]">
-          <div aria-hidden="true" className="absolute border-[#e9a200] border-[0.2px] border-solid inset-0 pointer-events-none rounded-[13px] shadow-[0px_4px_44px_0px_rgba(0,0,0,0.59)]" />
-        </div>
-        
-        <div className="absolute left-[825px] size-[45px] top-[3006px]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 45 45">
-            <path d={svgPaths.p204e1680} fill="white" />
-            <path d={svgPaths.p334da980} fill="white" />
-          </svg>
-        </div>
-
-      
-      </div>
-    </div>
-  );
-}
-
 // Main Landing Page Component
 export default function LandingPage() {
   return (
     <div className="bg-[#121212] relative size-full overflow-x-hidden overflow-y-visible min-h-screen">
       {/* Hero Section */}
       <HeroSection />
-
       
-      {/* Navigation Arrows - positioned between framework and profile sections */}
-      <div className="absolute top-[1260px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
-        {/* Left Arrow */}
-        <button className="w-[50px] h-[50px] bg-[rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.3)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[rgba(0,0,0,0.8)] hover:border-[rgba(255,255,255,0.5)] transition-all duration-300 group">
-          <svg className="w-6 h-6 text-white rotate-180 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        {/* Right Arrow */}
-        <button className="w-[50px] h-[50px] bg-[#ffb700] border border-[rgba(255,183,0,0.5)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[#e6a20b] hover:border-[rgba(230,162,11,0.8)] transition-all duration-300 group">
-          <svg className="w-6 h-6 text-black group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
 
       {/* Framework Section */}
       <div className="absolute font-['Staatliches:Regular',_sans-serif] leading-[0] left-[375px] not-italic text-[50px] text-white top-[1166px] tracking-[-2.349px] w-[783px]">
@@ -247,8 +139,6 @@ export default function LandingPage() {
         {/* Left Side Card */}
         <div className="h-[347px] relative shrink-0 w-[314px]">
           <div className="absolute bg-[#c4c4c4] h-[347px] left-0 rounded-[30px] top-0 w-[314px]" />
-          {/* Bottom corners blur effect */}
-          <div className="absolute bottom-0 left-0 w-[314px] h-[200px] rounded-b-[30px] bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none  blur-[80px] filter" />
         </div>
         
         {/* Center Card with Profile Image */}
@@ -288,8 +178,6 @@ export default function LandingPage() {
         {/* Right Side Card */}
         <div className="h-[347px] relative shrink-0 w-[342px]">
           <div className="absolute bg-[#c4c4c4] h-[347px] left-0 rounded-[30px] top-0 w-[342px]" />
-          {/* Bottom corners blur effect */}
-          <div className="absolute bottom-0 left-0 w-[342px] h-[200px] rounded-b-[30px] bg-gradient-to-t from-black/60 via-black/30 to-transparent pointer-events-none blur-[80px] filter" />
         </div>
       </div>
 
@@ -622,11 +510,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-
-      {/* Additional decorative elements */}
-
-      
-      
       {/* Main Profile Image - positioned to match the image */}
       <div className="absolute left-[990px] top-[200px] z-20 overflow-visible">
         <img 
