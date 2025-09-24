@@ -221,7 +221,7 @@ export default function LandingPage() {
 
       
       {/* Navigation Arrows - positioned between framework and profile sections */}
-      <div className="absolute top-[1000px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
+      <div className="absolute top-[1266px] left-1/2 transform -translate-x-1/2 flex gap-[15px] z-30">
         {/* Left Arrow */}
         <button className="w-[50px] h-[50px] bg-[rgba(0,0,0,0.6)] border border-[rgba(255,255,255,0.3)] rounded-full flex items-center justify-center cursor-pointer hover:bg-[rgba(0,0,0,0.8)] hover:border-[rgba(255,255,255,0.5)] transition-all duration-300 group">
           <svg className="w-6 h-6 text-white rotate-180 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
