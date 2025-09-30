@@ -92,6 +92,22 @@ function HeroSection() {
       {/* Navigation */}
       <Navigation />
 
+      {/* Main Rafaelo Title */}
+      <div className="absolute left-[115px] top-[150px] z-20">
+        <h1 
+          className="text-[#FFC20E] text-[100px] font-bold leading-none"
+          style={{
+            fontFamily: "'Alex Brush', 'Great Vibes', 'Dancing Script', 'Allura', cursive",
+            textShadow: "4px 4px 8px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.6)",
+            filter: "drop-shadow(3px 3px 6px rgba(0, 0, 0, 1))",
+            fontWeight: "400",
+            letterSpacing: "2px"
+          }}
+        >
+          Rafaelo
+        </h1>
+      </div>
+
       {/* Hero Content */}
       <div className="absolute font-['Staatliches:Regular',_sans-serif] left-[115px] not-italic text-[25.946px] text-white top-[280px] tracking-[10.1189px] uppercase w-[412px] h-[100px] flex items-center z-10">
         <p className="leading-[1.2] drop-shadow-lg">TikTok Masterclass</p>
@@ -459,23 +475,40 @@ export default function LandingPage() {
           <div className="absolute left-16 top-1/2 transform -translate-y-1/2 z-20 w-[400px]">
             {/* Quote Text - Left Aligned */}
             <div className="flex flex-col space-y-6 text-left">
-              {/* Quotation Marks */}
-              <div className="text-white text-[80px] font-bold leading-none opacity-60">
-                "
-              </div>
-              
-              {/* Main Quote */}
-              <div className="text-white text-3xl md:text-4xl font-bold uppercase leading-tight">
-                <p>THIS COURSE IS 100% MY SYSTEM, BUILT WITH LOVE, HUSTLE, AND REAL RESULTS</p>
+              {/* Quotation Marks with Text Overlay */}
+              <div className="relative mb-6">
+                <img 
+                  src={'/1".png'} 
+                  alt="Stylized quotation marks" 
+                  className="w-[300px] h-[200px] object-contain"
+                  style={{
+                    filter: "brightness(1.5) contrast(1.3) invert(0.1)",
+                    opacity: "1.0"
+                  }}
+                />
+                {/* Main Quote - Positioned over the image */}
+                <div className="absolute top-17 left-4 text-white text-2xl md:text-3xl font-bold uppercase leading-tight z-10">
+                  <p>THIS COURSE IS 100% MY SYSTEM, BUILT WITH LOVE, HUSTLE, AND REAL RESULTS</p>
+                </div>
               </div>
               
               {/* Signature - Different Format */}
-              <div className="text-[#FFC20E] text-3xl font-bold uppercase tracking-wider">
-                - RAFAELO
+              <div 
+                className="text-[#FFC20E] text-5xl font-bold"
+                style={{
+                  fontFamily: "'Alex Brush', 'Great Vibes', 'Dancing Script', cursive",
+                  letterSpacing: "-1px",
+                  marginTop: "170px"
+                }}
+              >
+                Rafaelo
               </div>
               
               {/* CTA Button */}
-              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-lg w-fit">
+              <button 
+                className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-lg w-fit"
+                style={{ marginTop: "30px" }}
+              >
                 Start The Journey
               </button>
             </div>
