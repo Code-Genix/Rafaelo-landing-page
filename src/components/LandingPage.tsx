@@ -124,7 +124,7 @@ function HeroSection() {
 // Main Landing Page Component
 export default function LandingPage() {
   return (
-    <div className="bg-[#121212] relative size-full overflow-x-hidden overflow-y-visible min-h-screen">
+    <div className="bg-black relative size-full overflow-x-hidden overflow-y-visible min-h-screen">
       {/* Hero Section */}
       <HeroSection />
       
@@ -340,7 +340,7 @@ export default function LandingPage() {
       </div>
 
       {/* Course Modules Section - Redesigned */}
-      <div className="absolute left-0 top-[3600px] w-full bg-[#121212] py-16" id="modules">
+      <div className="absolute left-0 top-[3600px] w-full bg-black py-16" id="modules">
         <div className="max-w-6xl mx-auto px-8">
           
           {/* Module 1 - Highlighted */}
@@ -369,35 +369,170 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Community Section */}
-      <div className="absolute contents left-[99px] top-[6140px]">
-        <div className="absolute bg-gradient-to-br from-[#333] to-[#555] h-[721px] left-[99px] top-[6140px] w-[832px]" />
-        
-        <div className="absolute font-['Staatliches:Regular',_sans-serif] h-[230.651px] leading-[0] left-[166px] not-italic text-[#e6a20b] text-[126.858px] top-[6916px] w-[602px]">
-          <p className="leading-[111.481px]">COMMUNITY OF HUSTLERS</p>
+      {/* Community of Hustlers Section - After Modules */}
+      <div className="absolute left-0 top-[5000px] w-full h-[800px] bg-black">
+        <div className="relative h-full flex items-center justify-between px-16 lg:px-24">
+          
+          {/* Left Side - Phone with Hands and Messenger Icon */}
+          <div className="flex-1 flex justify-center items-center relative">
+            {/* Background container for phone and hands - more rectangular */}
+            <div className="relative w-[400px] h-[300px] bg-gray-200 rounded-[8px] flex items-center justify-center">
+              {/* Phone with hands image */}
+              <img 
+                src="/20230430_img_4123_cr2_dxo_deepprime1 1.png" 
+                alt="Hands holding phone" 
+                className="w-full h-full object-contain rounded-[4px]"
+              />
+              
+              {/* Blue messenger icon floating above phone - bigger size */}
+              <div className="absolute -top-10 -left-10 w-50 h-50">
+                <img 
+                  src="/88cb0ad5-2b53-43dd-bbeb-432016899127 1.png" 
+                  alt="Messenger icon" 
+                  className="w-full h-full object-contain filter blur-sm"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Text Content */}
+          <div className="flex-1 flex flex-col items-start space-y-6">
+            {/* 2000+ Members */}
+            <div className="flex flex-col items-start">
+              <div className="flex items-baseline space-x-2">
+                <span className="font-['Staatliches:Regular',_sans-serif] text-[120px] text-[#FFC20E] font-bold leading-none">2000</span>
+                <span className="font-['Staatliches:Regular',_sans-serif] text-[60px] text-[#FFC20E] font-bold leading-none">+</span>
+              </div>
+              <span className="font-['Poppins:Regular',_sans-serif] text-[32px] text-white/80 font-medium">Members</span>
+            </div>
+
+            {/* Join Community Button */}
+            <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-xl px-8 py-4 rounded-full transition-colors duration-300 shadow-lg">
+              Join Community
+            </button>
+
+            {/* Lorem Ipsum Text - Stacked vertically as in image */}
+            <div className="text-white text-2xl font-bold uppercase tracking-wider leading-tight">
+              <p>LOREM IPSUM</p>
+              <p>DOLOR SIT AMET,</p>
+              <p>CONSECTETUR</p>
+              <p>ADIPISCING ELIT</p>
+            </div>
+          </div>
         </div>
-        
-        <div className="absolute contents left-[964px] top-[6363px]">
-          <div className="absolute font-['Staatliches:Regular',_sans-serif] left-[964px] text-[#e6a20b] text-[96px] text-nowrap top-[6363px]">
-            <p className="leading-[1.15] whitespace-pre">2000</p>
+
+        {/* Bottom Section - Main Title and Description */}
+        <div className="absolute -bottom-45 left-0 w-full flex items-end justify-between px-16 lg:px-24">
+          {/* Left - Main Title */}
+          <div className="flex-1">
+            <h2 className="font-['Staatliches:Regular',_sans-serif] text-[80px] text-[#FFC20E] font-bold leading-none uppercase">
+              COMMUNITY
+              <br />
+              OF HUSTLERS
+            </h2>
           </div>
-          <div className="absolute font-['Staatliches:Regular',_sans-serif] h-[25.975px] left-[1150px] text-[#e6a20b] text-[43.357px] top-[6405px] w-[27px]">
-            <p className="leading-[38.101px]">+</p>
-          </div>
-          <div className="absolute font-['Poppins:Regular',_sans-serif] left-[969px] text-[24px] text-[rgba(255,255,255,0.8)] text-nowrap top-[6457px]">
-            <p className="leading-[1.55] whitespace-pre">Members</p>
+
+          {/* Right - Description */}
+          <div className="flex-1 pl-16">
+            <p className="text-white text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
           </div>
         </div>
       </div>
 
+      {/* Testimonial Section - Rafaelo Quote */}
+      <div className="absolute left-0 top-[6200px] w-full h-[600px] bg-black">
+        <div className="relative h-full flex items-center justify-center px-16 lg:px-24">
+          {/* Background Image Container - Centered */}
+          <div className="relative w-[1000px] h-[500px] rounded-[20px] overflow-hidden">
+            <img 
+              src="/Group 24.png" 
+              alt="Testimonial background" 
+              className="w-full h-full object-cover"
+            />
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+          
+          {/* Text Content - Positioned to the left of the image container */}
+          <div className="absolute left-16 top-1/2 transform -translate-y-1/2 z-20 w-[400px]">
+            {/* Quote Text - Left Aligned */}
+            <div className="flex flex-col space-y-6 text-left">
+              {/* Quotation Marks */}
+              <div className="text-white text-[80px] font-bold leading-none opacity-60">
+                "
+              </div>
+              
+              {/* Main Quote */}
+              <div className="text-white text-3xl md:text-4xl font-bold uppercase leading-tight">
+                <p>THIS COURSE IS 100% MY SYSTEM, BUILT WITH LOVE, HUSTLE, AND REAL RESULTS</p>
+              </div>
+              
+              {/* Signature - Different Format */}
+              <div className="text-[#FFC20E] text-3xl font-bold uppercase tracking-wider">
+                - RAFAELO
+              </div>
+              
+              {/* CTA Button */}
+              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-lg px-8 py-4 rounded-full transition-colors duration-300 shadow-lg w-fit">
+                Start The Journey
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Lifetime Access Section */}
+      <div className="absolute left-0 top-[6900px] w-full h-[1000px] bg-black">
+        {/* Text Content - Positioned at top */}
+        <div className="absolute top-16 left-0 w-full z-10 flex flex-col items-center justify-center px-16 lg:px-24">
+          <div className="text-center space-y-6 max-w-4xl">
+            {/* Headlines */}
+            <div className="space-y-3">
+              <h2 className="text-[#FFC20E] text-4xl md:text-5xl font-bold uppercase tracking-wider">
+                LIFETIME ACCESS.
+              </h2>
+              <h3 className="text-white text-4xl md:text-5xl font-bold uppercase tracking-wider">
+                ONE-TIME PAYMENT.
+              </h3>
+            </div>
+            
+            {/* Description */}
+            <p className="text-white text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit
+            </p>
+            
+            {/* Price */}
+            <div className="text-[#FFC20E] text-6xl md:text-7xl font-bold">
+              $100
+            </div>
+            
+            {/* CTA Button */}
+            <button className="bg-gradient-to-r from-[#FFC20E] to-[#FF8C00] hover:from-[#e6a20b] hover:to-[#e67e00] text-white font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 shadow-lg transform hover:scale-105">
+              BUY NOW
+            </button>
+          </div>
+        </div>
+        
+        {/* Background Image - Positioned below text */}
+        <div className="absolute top-[400px] left-0 w-full h-[600px] flex items-center justify-center">
+          <img 
+            src="/image 5.png" 
+            alt="Lifetime access background" 
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+
       {/* Pricing Section */}
-      <div id="pricing" className="absolute contents left-[3374px] top-[6538px]">
-        <div className="absolute flex flex-col font-['DM_Sans:Regular',_sans-serif] font-normal justify-center leading-[0] left-[4036px] text-[64px] text-center text-white top-[6622px] translate-x-[-50%] translate-y-[-50%] w-[860px]" style={{ fontVariationSettings: "'opsz' 14" }}>
+      <div id="pricing" className="absolute contents left-[3374px] top-[8038px]">
+        <div className="absolute flex flex-col font-['DM_Sans:Regular',_sans-serif] font-normal justify-center leading-[0] left-[4036px] text-[64px] text-center text-white top-[8122px] translate-x-[-50%] translate-y-[-50%] w-[860px]" style={{ fontVariationSettings: "'opsz' 14" }}>
           <p className="leading-[1.32]">Simple, Transparent, and Scalable Pricing</p>
         </div>
         
         {/* Pricing Cards */}
-        <div className="absolute content-stretch flex gap-[21px] items-center justify-start top-[6766px] translate-x-[-50%]" style={{ left: "calc(50% + 3266px)" }}>
+        <div className="absolute content-stretch flex gap-[21px] items-center justify-start top-[8266px] translate-x-[-50%]" style={{ left: "calc(50% + 3266px)" }}>
           {/* Starter Plan */}
           <div className="bg-[#070707] h-[292px] relative rounded-[20px] shrink-0 w-[418px] hover:scale-105 transition-transform cursor-pointer">
             <div aria-hidden="true" className="absolute border border-[#ffeff1] border-solid inset-0 pointer-events-none rounded-[20px]" />
@@ -493,22 +628,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Final CTA Section */}
-      <div className="absolute contents left-[-113px] top-[8485px]">
-        <div className="absolute bg-gradient-to-br from-[#222] to-[#444] h-[936px] left-[-113px] mix-blend-lighten top-[8506px] w-[1670px]" />
-        
-        <div className="absolute font-badrock h-[231px] leading-[0] left-[743.5px] not-italic text-[#e6a20b] text-[126.858px] text-center top-[8485px] translate-x-[-50%] w-[955px]">
-          <p className="leading-[111.481px]">$100</p>
-        </div>
-        
-        <div className="absolute h-[91.867px] left-[401px] top-[8604px] w-[689.651px]">
-          <div className="absolute bg-gradient-to-r box-border content-stretch flex from-[#d99c00] gap-[13.333px] items-center justify-center px-[63.999px] py-[23.29px] rounded-[77.634px] to-[#ffaa00] top-[-11px] translate-x-[-50%] w-[176px] cursor-pointer hover:from-[#e6a20b] hover:to-[#ffbb00] transition-all transform hover:scale-105" style={{ left: "calc(50% + 0.019px)" }}>
-            <div className="flex flex-col font-['Poppins:SemiBold',_sans-serif] justify-center leading-[0] not-italic relative shrink-0 text-[21.996px] text-black text-center text-nowrap">
-              <p className="leading-none whitespace-pre">BUY NOW</p>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Profile Image - positioned to match the image */}
       <div className="absolute left-[990px] top-[200px] z-20 overflow-visible">
@@ -520,7 +639,7 @@ export default function LandingPage() {
       </div>
 
       {/* Yellow Banner - positioned on top of the card profile */}
-      <div className="absolute bg-[#ffb700] left-[955px] rounded-[25px] top-[52%] w-[450px] h-[100px] z-30 overflow-visible shadow-[0px_10px_30px_rgba(0,0,0,0.3)]">
+      <div className="absolute bg-[#ffb700] left-[955px] rounded-[25px] top-[60%] w-[450px] h-[100px] z-30 overflow-visible shadow-[0px_10px_30px_rgba(0,0,0,0.3)]">
         <div aria-hidden="true" className="absolute border border-black border-solid inset-0 pointer-events-none rounded-[25px]" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
           <p className="font-['Staatliches:Regular',_sans-serif] text-[44px] text-black font-bold leading-[1] text-center tracking-[0.5px] uppercase">
