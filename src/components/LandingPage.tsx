@@ -1,15 +1,16 @@
 import svgPaths from "../imports/svg-gfdvud67i5";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Navigation Component
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Left Side - Get the access and Get Started Buttons */}
+    <nav className="fixed top-0 left-0 right-0 z-50 w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex items-center justify-between py-4 relative">
+          
+          {/* Left Side - Get the Access and Get Started Buttons (iPad/Web) */}
           <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Get the access Button - Visible on all screens */}
             <button className="bg-[#d99c00] flex items-center gap-2 px-3 py-2 sm:px-4 rounded-full cursor-pointer hover:bg-[#e6a20b] transition-colors">
@@ -34,9 +35,9 @@ function Navigation() {
             </button>
           </div>
 
-          {/* Right Side - About me / Benefits and Mobile menu */}
+          {/* Right Side - About/Benefits (iPad/Web) and Mobile Menu Button */}
           <div className="flex items-center space-x-4">
-            {/* About me / Benefits - Only on larger screens */}
+            {/* About me / Benefits - Only on iPad and larger screens */}
             <div className="hidden md:block bg-[#070707] px-4 py-2 rounded-full">
               <div className="flex space-x-8">
                 <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
@@ -44,7 +45,7 @@ function Navigation() {
               </div>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu button - Only on mobile */}
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -68,9 +69,6 @@ function Navigation() {
             <div className="flex flex-col space-y-4">
               <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
               <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">Benefits</a>
-              <button className="bg-[#d99c00] hover:bg-[#e6a20b] text-black font-medium text-sm px-4 py-2 rounded-full transition-colors w-fit">
-                Get Started
-              </button>
             </div>
           </div>
         )}
@@ -189,6 +187,20 @@ function HeroSection() {
                 </h2>
               </div>
             </div>
+
+            {/* Members Count with Stars - Mobile Only, Below Profile Image */}
+            <div className="lg:hidden flex flex-col items-center mt-8 space-y-4">
+              <div className="font-staatliches text-3xl sm:text-4xl text-white font-bold leading-tight tracking-wide uppercase drop-shadow-lg text-center">
+                +1000 MEMBERS
+              </div>
+              <div className="flex justify-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -210,32 +222,90 @@ function HeroSection() {
   );
 }
 
-// Main Landing Page Component
-export default function LandingPage() {
+// Framework Section Component with Carousel
+function FrameworkSection() {
+  const [currentSlide, setCurrentSlide] = useState(1); // 0 = left, 1 = center, 2 = right
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  const goToSlide = (slideIndex: number) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrentSlide(slideIndex);
+    
+    // Reset transition state after animation completes
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 300);
+  };
+
+  const goToPrevious = () => {
+    const newSlide = currentSlide === 0 ? 2 : currentSlide - 1;
+    goToSlide(newSlide);
+  };
+
+  const goToNext = () => {
+    const newSlide = currentSlide === 2 ? 0 : currentSlide + 1;
+    goToSlide(newSlide);
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        goToPrevious();
+      } else if (event.key === 'ArrowRight') {
+        goToNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide, isTransitioning]);
+
   return (
-    <div className="bg-black min-h-screen">
-      {/* Hero Section */}
-      <HeroSection />
-      
-      {/* Framework Section */}
-      <section className="py-16 sm:py-20 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Title */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="font-staatliches text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white uppercase tracking-wide">
-              READY-TO-WORK FRAMEWORK
-            </h2>
-          </div>
-          
-          {/* Framework Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
+    <section className="py-16 sm:py-20 lg:py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Title */}
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="font-staatliches text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white uppercase tracking-wide">
+            READY-TO-WORK FRAMEWORK
+          </h2>
+        </div>
+        
+        {/* Navigation Controls */}
+        <div className="flex justify-center gap-4 mb-6 sm:mb-8">
+          <button 
+            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-[#FFC20E] rounded-full border-2 border-black/20 shadow-lg hover:bg-[#e6a20b] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFC20E] focus:ring-offset-2 focus:ring-offset-black"
+            aria-label="Previous slide"
+            onClick={goToPrevious}
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button 
+            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-[#FFC20E] rounded-full border-2 border-black/20 shadow-lg hover:bg-[#e6a20b] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFC20E] focus:ring-offset-2 focus:ring-offset-black"
+            aria-label="Next slide"
+            onClick={goToNext}
+          >
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        
+        {/* Framework Cards Container */}
+        <div className="relative">
+          {/* Desktop Grid - Hidden on mobile/tablet */}
+          <div className="hidden lg:grid grid-cols-3 gap-4 lg:gap-6 items-center justify-items-center">
             {/* Left Side Card */}
-            <div className="h-64 sm:h-80 lg:h-[347px] relative order-2 md:order-1">
-              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px]" />
+            <div className="w-[280px] h-[240px] relative">
+              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
             </div>
             
             {/* Center Card with Profile Image - Featured */}
-            <div className="h-80 sm:h-96 lg:h-[459px] relative order-1 md:order-2">
+            <div className="w-[320px] h-[320px] relative">
               {/* Full Background Image Container */}
               <div className="absolute inset-0 rounded-[30px] overflow-hidden">
                 <img 
@@ -251,7 +321,7 @@ export default function LandingPage() {
               <div className="absolute inset-0 bg-gradient-to-l from-[rgba(37,37,37,0.6)] to-[rgba(37,37,37,0.6)] via-[51.923%] via-[rgba(0,0,0,0.2)] rounded-[30px] z-10" />
               
               {/* White Profile Card Container */}
-              <div className="absolute left-1 top-2 sm:left-2 sm:top-3 w-[calc(100%-8px)] sm:w-[calc(100%-16px)] h-48 sm:h-64 lg:h-[300px] flex items-center justify-center p-2 sm:p-4 z-20">
+              <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-[200px] flex items-center justify-center p-2 z-20">
                 <img 
                   src="/image 1.png" 
                   alt="Profile card showcase" 
@@ -260,24 +330,101 @@ export default function LandingPage() {
               </div>
               
               {/* Text Content */}
-              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-20">
-                <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-2xl sm:text-3xl lg:text-4xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
+              <div className="absolute bottom-4 left-4 right-4 z-20">
+                <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
                   <p className="leading-tight">Proven Growth</p>
                 </div>
                 
-                <div className="font-dm-sans text-sm sm:text-base lg:text-lg text-white mt-2">
+                <div className="font-dm-sans text-sm text-white mt-2">
                   <p className="leading-tight">From 0 to 8M</p>
                 </div>
               </div>
             </div>
             
             {/* Right Side Card */}
-            <div className="h-64 sm:h-80 lg:h-[347px] relative order-3">
-              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px]" />
+            <div className="w-[280px] h-[240px] relative">
+              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+            </div>
+          </div>
+
+          {/* Mobile/Tablet Carousel - Visible on mobile/tablet */}
+          <div className="lg:hidden relative overflow-hidden">
+            <div 
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {/* Left Card */}
+              <div className="w-full flex-shrink-0 px-4">
+                <div className="w-full h-64 sm:h-80 bg-[#c4c4c4] rounded-[30px] shadow-lg mx-auto max-w-[280px]" />
+              </div>
+              
+              {/* Center Card */}
+              <div className="w-full flex-shrink-0 px-4">
+                <div className="w-full h-80 sm:h-96 relative mx-auto max-w-[320px]">
+                  {/* Full Background Image Container */}
+                  <div className="absolute inset-0 rounded-[30px] overflow-hidden">
+                    <img 
+                      src="/About Us Image Background.png" 
+                      alt="Background" 
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Dark overlay for better contrast */}
+                    <div className="absolute inset-0 bg-black/30"></div>
+                  </div>
+                  
+                  {/* Original gradient overlay for additional depth */}
+                  <div className="absolute inset-0 bg-gradient-to-l from-[rgba(37,37,37,0.6)] to-[rgba(37,37,37,0.6)] via-[51.923%] via-[rgba(0,0,0,0.2)] rounded-[30px] z-10" />
+                  
+                  {/* White Profile Card Container */}
+                  <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-48 sm:h-64 flex items-center justify-center p-2 z-20">
+                    <img 
+                      src="/image 1.png" 
+                      alt="Profile card showcase" 
+                      className="max-w-full max-h-full object-contain rounded-[20px]"
+                    />
+                  </div>
+                  
+                  {/* Text Content */}
+                  <div className="absolute bottom-4 left-4 right-4 z-20">
+                    <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-2xl sm:text-3xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
+                      <p className="leading-tight">Proven Growth</p>
+                    </div>
+                    
+                    <div className="font-dm-sans text-sm sm:text-base text-white mt-2">
+                      <p className="leading-tight">From 0 to 8M</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Card */}
+              <div className="w-full flex-shrink-0 px-4">
+                <div className="w-full h-64 sm:h-80 bg-[#c4c4c4] rounded-[30px] shadow-lg mx-auto max-w-[280px]" />
+              </div>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* Screen reader announcements */}
+        <div className="sr-only" aria-live="polite" aria-atomic="true">
+          {currentSlide === 0 && "Showing left card"}
+          {currentSlide === 1 && "Showing center card with profile information"}
+          {currentSlide === 2 && "Showing right card"}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Main Landing Page Component
+export default function LandingPage() {
+  return (
+    <div className="bg-black min-h-screen">
+      {/* Hero Section */}
+      <HeroSection />
+      
+      {/* Framework Section */}
+      <FrameworkSection />
 
       {/* Portfolio Section - Refactored */}
       <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
