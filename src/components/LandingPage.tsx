@@ -6,55 +6,59 @@ function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
-          {/* Logo/Brand */}
+          {/* Left Side - Get the access and Get Started Buttons */}
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="bg-[#d99c00] flex items-center gap-2 sm:gap-4 px-2 py-1 sm:px-4 sm:py-2 rounded-full cursor-pointer hover:bg-[#e6a20b] transition-colors">
-              <div className="w-6 h-6 sm:w-8 sm:h-8">
+            {/* Get the access Button - Visible on all screens */}
+            <button className="bg-[#d99c00] flex items-center gap-2 px-3 py-2 sm:px-4 rounded-full cursor-pointer hover:bg-[#e6a20b] transition-colors">
+              <div className="w-5 h-5 sm:w-6 sm:h-6">
                 <svg className="w-full h-full" fill="none" viewBox="0 0 30 30">
                   <circle cx="15" cy="15" fill="white" r="15" />
                   <path d="M12 10l6 5-6 5" stroke="#121212" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
                 </svg>
               </div>
-              <span className="text-white text-xs sm:text-sm font-medium hidden sm:block">Get the access</span>
-            </div>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="bg-[#070707] px-4 py-2 rounded-full">
-              <div className="flex space-x-8">
-                <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
-                <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">Benefits</a>
-              </div>
-            </div>
-            <button className="bg-[#070707] border border-[#e6a20b] hover:border-[#ffaa00] flex items-center gap-2 px-4 py-2 rounded-full transition-colors group">
-              <div className="w-6 h-6">
+              <span className="text-white text-xs sm:text-sm font-medium">Get The Access</span>
+            </button>
+            
+            {/* Get Started Button - Visible on all screens */}
+            <button className="bg-[#070707] border border-[#e6a20b] hover:border-[#ffaa00] flex items-center gap-2 px-3 py-2 sm:px-4 rounded-full transition-colors group">
+              <div className="w-5 h-5 sm:w-6 sm:h-6">
                 <svg className="w-full h-full" fill="none" viewBox="0 0 30 30">
                   <circle cx="15" cy="15" fill="#FFBB00" r="15" />
                   <path d="M12 10l6 5-6 5" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" fill="none" />
                 </svg>
               </div>
-              <span className="text-white text-sm font-medium">Get Started</span>
+              <span className="text-white text-xs sm:text-sm font-medium">Get Started</span>
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-[#FFC20E] transition-colors p-2"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
+          {/* Right Side - About me / Benefits and Mobile menu */}
+          <div className="flex items-center space-x-4">
+            {/* About me / Benefits - Only on larger screens */}
+            <div className="hidden md:block bg-[#070707] px-4 py-2 rounded-full">
+              <div className="flex space-x-8">
+                <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
+                <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">Benefits</a>
+              </div>
+            </div>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-white hover:text-[#FFC20E] transition-colors p-2 border-2 border-[#d99c00] rounded-lg"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -88,7 +92,7 @@ function HeroSection() {
         <img 
           src="/Hero Banner Image.png" 
           alt="Hero banner background" 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-[center_20%]"
         />
         {/* Gradient overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/50"></div>
@@ -167,75 +171,23 @@ function HeroSection() {
             </button>
           </div>
 
-          {/* Right Side - Profile Card & Banner (Mobile: Below, Desktop: Right) */}
+          {/* Right Side - Profile Image & Banner (Mobile: Below, Desktop: Right) */}
           <div className="relative flex flex-col items-center lg:items-end lg:flex-none w-full lg:w-auto max-w-[400px] lg:max-w-none">
             
-            {/* Profile Card */}
-            <div className="relative bg-white rounded-[30px] shadow-2xl p-6 w-full max-w-[320px] sm:max-w-[340px] lg:max-w-[360px] mb-6 lg:mb-8">
-              {/* Profile Picture */}
-              <div className="flex justify-center mb-4">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-4 border-gray-100">
-                  <img 
-                    src="/image 1.png" 
-                    alt="Rafaelo profile" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+            {/* Profile Image */}
+            <div className="relative w-full max-w-[320px] sm:max-w-[340px] lg:max-w-[360px]">
+              <img 
+                src="/image 1.png" 
+                alt="Rafaelo profile" 
+                className="w-full h-auto object-contain"
+              />
+              
+              {/* Yellow Banner - Way to $50K/Month - Positioned above image */}
+              <div className="absolute top-48 sm:top-50 lg:top-56 left-1/2 transform -translate-x-1/2 bg-[#FFC20E] border-2 border-black rounded-[25px] px-8 py-5 shadow-xl w-[calc(100%+60px)] max-w-[380px] sm:max-w-[420px] z-10">
+                <h2 className="font-staatliches text-3xl sm:text-4xl md:text-[44px] text-black font-bold text-center leading-tight tracking-wide uppercase">
+                  WAY TO $50K/MONTH
+                </h2>
               </div>
-
-              {/* Username */}
-              <div className="text-center mb-1">
-                <h3 className="text-black font-semibold text-lg flex items-center justify-center gap-1">
-                  @rafaelo.ro
-                  <svg className="w-5 h-5 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </h3>
-                <p className="text-gray-500 text-xs">LIVE Pro</p>
-              </div>
-
-              {/* Stats */}
-              <div className="flex justify-around items-center py-4 border-b border-gray-100">
-                <div className="text-center">
-                  <p className="text-black font-bold text-base sm:text-lg">2867</p>
-                  <p className="text-gray-500 text-xs">Following</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-black font-bold text-base sm:text-lg">8.0M</p>
-                  <p className="text-gray-500 text-xs">Followers</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-black font-bold text-base sm:text-lg">85.2M</p>
-                  <p className="text-gray-500 text-xs">Likes</p>
-                </div>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="flex items-center gap-2 mt-4">
-                <button className="bg-[#FE2C55] hover:bg-[#e0254a] text-white font-semibold text-sm px-6 py-2 rounded-md flex-1 transition-colors">
-                  Follow
-                </button>
-                <button className="bg-gray-100 hover:bg-gray-200 text-black font-semibold text-sm px-4 py-2 rounded-md transition-colors">
-                  Message
-                </button>
-                <button className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-md transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </button>
-                <button className="bg-gray-100 hover:bg-gray-200 text-black p-2 rounded-md transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            {/* Yellow Banner - Way to $50K/Month */}
-            <div className="bg-[#FFC20E] border-2 border-black rounded-[25px] px-8 py-5 shadow-xl w-full max-w-[380px] sm:max-w-[420px]">
-              <h2 className="font-staatliches text-3xl sm:text-4xl md:text-[44px] text-black font-bold text-center leading-tight tracking-wide uppercase">
-                WAY TO $50K/MONTH
-              </h2>
             </div>
           </div>
         </div>
