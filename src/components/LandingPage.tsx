@@ -181,7 +181,7 @@ function HeroSection() {
               />
               
               {/* Yellow Banner - Way to $50K/Month - Positioned above image */}
-              <div className="absolute top-48 sm:top-50 lg:top-56 left-1/2 transform -translate-x-1/2 bg-[#FFC20E] border-2 border-black rounded-[25px] px-8 py-5 shadow-xl w-[calc(100%+60px)] max-w-[380px] sm:max-w-[420px] z-10">
+              <div className="absolute top-52 sm:top-56 lg:top-64 left-1/2 transform -translate-x-1/2 bg-[#FFC20E] border-2 border-black rounded-[25px] px-8 py-5 shadow-xl w-[calc(100%+60px)] max-w-[380px] sm:max-w-[420px] z-10">
                 <h2 className="font-staatliches text-3xl sm:text-4xl md:text-[44px] text-black font-bold text-center leading-tight tracking-wide uppercase">
                   WAY TO $50K/MONTH
                 </h2>
@@ -264,19 +264,19 @@ function FrameworkSection() {
   }, [currentSlide, isTransitioning]);
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Title */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="font-staatliches text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white uppercase tracking-wide">
-            READY-TO-WORK FRAMEWORK
-          </h2>
-        </div>
-        
+              READY-TO-WORK FRAMEWORK
+            </h2>
+          </div>
+          
         {/* Navigation Controls */}
         <div className="flex justify-center gap-4 mb-6 sm:mb-8">
           <button 
-            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-[#FFC20E] rounded-full border-2 border-black/20 shadow-lg hover:bg-[#e6a20b] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFC20E] focus:ring-offset-2 focus:ring-offset-black"
+            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-transparent border-2 border-white rounded-full shadow-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
             aria-label="Previous slide"
             onClick={goToPrevious}
           >
@@ -285,11 +285,11 @@ function FrameworkSection() {
             </svg>
           </button>
           <button 
-            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-[#FFC20E] rounded-full border-2 border-black/20 shadow-lg hover:bg-[#e6a20b] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFC20E] focus:ring-offset-2 focus:ring-offset-black"
+            className="w-11 h-11 sm:w-12 sm:h-12 lg:w-[60px] lg:h-[60px] bg-[#FFC20E] rounded-full shadow-lg hover:bg-[#e6a20b] transition-colors focus:outline-none focus:ring-2 focus:ring-[#FFC20E] focus:ring-offset-2 focus:ring-offset-black"
             aria-label="Next slide"
             onClick={goToNext}
           >
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 mx-auto" fill="none" stroke="white" viewBox="0 0 24 24" strokeWidth="2">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 mx-auto" fill="none" stroke="black" viewBox="0 0 24 24" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -297,15 +297,86 @@ function FrameworkSection() {
         
         {/* Framework Cards Container */}
         <div className="relative">
-          {/* Desktop Grid - Hidden on mobile/tablet */}
-          <div className="hidden lg:grid grid-cols-3 gap-4 lg:gap-6 items-center justify-items-center">
-            {/* Left Side Card */}
-            <div className="w-[280px] h-[240px] relative">
-              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+          {/* Desktop/Tablet Carousel - Always show 3 cards */}
+          <div className="hidden sm:block">
+            <div className="flex items-center justify-center gap-4 lg:gap-6 relative">
+              {/* Left Side Card - Dimmed */}
+              <div 
+                className={`w-[240px] h-[200px] lg:w-[280px] lg:h-[240px] relative transition-all duration-500 ease-in-out ${
+                  currentSlide === 0 ? 'scale-100 opacity-100 z-20' : 'scale-90 opacity-60 grayscale z-10'
+                }`}
+              >
+                <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+              </div>
+              
+              {/* Center Card with Profile Image - Active/Focused */}
+              <div 
+                className={`w-[280px] h-[240px] lg:w-[320px] lg:h-[320px] relative transition-all duration-500 ease-in-out ${
+                  currentSlide === 1 ? 'scale-100 opacity-100 z-30 shadow-2xl' : 'scale-90 opacity-60 grayscale z-10'
+                }`}
+              >
+                {/* Full Background Image Container */}
+                <div className="absolute inset-0 rounded-[30px] overflow-hidden">
+                  <img 
+                    src="/About Us Image Background.png" 
+                    alt="Background" 
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Dark overlay for better contrast */}
+                  <div className="absolute inset-0 bg-black/30"></div>
+                </div>
+                
+                {/* Original gradient overlay for additional depth */}
+                <div className="absolute inset-0 bg-gradient-to-l from-[rgba(37,37,37,0.6)] to-[rgba(37,37,37,0.6)] via-[51.923%] via-[rgba(0,0,0,0.2)] rounded-[30px] z-10" />
+                
+                {/* White Profile Card Container */}
+                <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-[200px] flex items-center justify-center p-2 z-20">
+                  <img 
+                    src="/image 1.png" 
+                    alt="Profile card showcase" 
+                    className="max-w-full max-h-full object-contain rounded-[20px]"
+                  />
+                </div>
+                
+                {/* Text Content */}
+                <div className="absolute bottom-4 left-4 right-4 z-20">
+                  <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
+                    <p className="leading-tight">Proven Growth</p>
+                  </div>
+                  
+                  <div className="font-dm-sans text-sm text-white mt-2">
+                    <p className="leading-tight">From 0 to 8M</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right Side Card - Dimmed */}
+              <div 
+                className={`w-[240px] h-[200px] lg:w-[280px] lg:h-[240px] relative transition-all duration-500 ease-in-out ${
+                  currentSlide === 2 ? 'scale-100 opacity-100 z-20' : 'scale-90 opacity-60 grayscale z-10'
+                }`}
+              >
+                <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Carousel - Only show active card */}
+          <div className="sm:hidden overflow-hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {/* Left Card */}
+              <div className="w-full flex-shrink-0 px-4">
+                <div className="w-full h-64 max-w-[280px] mx-auto relative">
+                  <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+                </div>
             </div>
             
             {/* Center Card with Profile Image - Featured */}
-            <div className="w-[320px] h-[320px] relative">
+              <div className="w-full flex-shrink-0 px-4">
+                <div className="w-full h-64 max-w-[320px] mx-auto relative shadow-2xl">
               {/* Full Background Image Container */}
               <div className="absolute inset-0 rounded-[30px] overflow-hidden">
                 <img 
@@ -321,7 +392,7 @@ function FrameworkSection() {
               <div className="absolute inset-0 bg-gradient-to-l from-[rgba(37,37,37,0.6)] to-[rgba(37,37,37,0.6)] via-[51.923%] via-[rgba(0,0,0,0.2)] rounded-[30px] z-10" />
               
               {/* White Profile Card Container */}
-              <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-[200px] flex items-center justify-center p-2 z-20">
+                  <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-[200px] flex items-center justify-center p-2 z-20">
                 <img 
                   src="/image 1.png" 
                   alt="Profile card showcase" 
@@ -330,68 +401,13 @@ function FrameworkSection() {
               </div>
               
               {/* Text Content */}
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
+                  <div className="absolute bottom-4 left-4 right-4 z-20">
+                    <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
                   <p className="leading-tight">Proven Growth</p>
                 </div>
                 
-                <div className="font-dm-sans text-sm text-white mt-2">
+                    <div className="font-dm-sans text-sm text-white mt-2">
                   <p className="leading-tight">From 0 to 8M</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Side Card */}
-            <div className="w-[280px] h-[240px] relative">
-              <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
-            </div>
-          </div>
-
-          {/* Mobile/Tablet Carousel - Visible on mobile/tablet */}
-          <div className="lg:hidden relative overflow-hidden">
-            <div 
-              className="flex transition-transform duration-300 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {/* Left Card */}
-              <div className="w-full flex-shrink-0 px-4">
-                <div className="w-full h-64 sm:h-80 bg-[#c4c4c4] rounded-[30px] shadow-lg mx-auto max-w-[280px]" />
-              </div>
-              
-              {/* Center Card */}
-              <div className="w-full flex-shrink-0 px-4">
-                <div className="w-full h-80 sm:h-96 relative mx-auto max-w-[320px]">
-                  {/* Full Background Image Container */}
-                  <div className="absolute inset-0 rounded-[30px] overflow-hidden">
-                    <img 
-                      src="/About Us Image Background.png" 
-                      alt="Background" 
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Dark overlay for better contrast */}
-                    <div className="absolute inset-0 bg-black/30"></div>
-                  </div>
-                  
-                  {/* Original gradient overlay for additional depth */}
-                  <div className="absolute inset-0 bg-gradient-to-l from-[rgba(37,37,37,0.6)] to-[rgba(37,37,37,0.6)] via-[51.923%] via-[rgba(0,0,0,0.2)] rounded-[30px] z-10" />
-                  
-                  {/* White Profile Card Container */}
-                  <div className="absolute left-1 top-2 w-[calc(100%-8px)] h-48 sm:h-64 flex items-center justify-center p-2 z-20">
-                    <img 
-                      src="/image 1.png" 
-                      alt="Profile card showcase" 
-                      className="max-w-full max-h-full object-contain rounded-[20px]"
-                    />
-                  </div>
-                  
-                  {/* Text Content */}
-                  <div className="absolute bottom-4 left-4 right-4 z-20">
-                    <div className="bg-clip-text bg-gradient-to-r from-[#d99c00] to-[#ffaa00] font-staatliches text-2xl sm:text-3xl font-bold uppercase" style={{ WebkitTextFillColor: "transparent" }}>
-                      <p className="leading-tight">Proven Growth</p>
-                    </div>
-                    
-                    <div className="font-dm-sans text-sm sm:text-base text-white mt-2">
-                      <p className="leading-tight">From 0 to 8M</p>
                     </div>
                   </div>
                 </div>
@@ -399,20 +415,22 @@ function FrameworkSection() {
               
               {/* Right Card */}
               <div className="w-full flex-shrink-0 px-4">
-                <div className="w-full h-64 sm:h-80 bg-[#c4c4c4] rounded-[30px] shadow-lg mx-auto max-w-[280px]" />
+                <div className="w-full h-64 max-w-[280px] mx-auto relative">
+                  <div className="absolute inset-0 bg-[#c4c4c4] rounded-[30px] shadow-lg" />
+                </div>
+              </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-
+            
         {/* Screen reader announcements */}
         <div className="sr-only" aria-live="polite" aria-atomic="true">
           {currentSlide === 0 && "Showing left card"}
           {currentSlide === 1 && "Showing center card with profile information"}
           {currentSlide === 2 && "Showing right card"}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 }
 
@@ -441,7 +459,7 @@ export default function LandingPage() {
         {/* Content Container */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-            {/* Left Side - Text and Button */}
+            {/* Left Side - Text and Button (Desktop) */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-lg">
               {/* Main Headline */}
               <h2 className="font-staatliches text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold uppercase leading-tight text-white mb-6 sm:mb-8">
@@ -454,8 +472,8 @@ export default function LandingPage() {
                 <span>HERE'S THE GAME</span>
               </h2>
               
-              {/* Yellow Button */}
-              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm sm:text-base px-6 py-3 rounded-full transition-colors duration-300 shadow-lg">
+              {/* Yellow Button - Hidden on mobile, visible on tablet and desktop */}
+              <button className="hidden sm:block bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm sm:text-base px-6 py-3 rounded-full transition-colors duration-300 shadow-lg">
                 Discover Your Earnings
               </button>
             </div>
@@ -516,13 +534,18 @@ export default function LandingPage() {
                   <span className="text-[#FFC20E] text-base sm:text-lg font-bold">$100,000+ / MONTH</span>
                 </div>
               </div>
+
+              {/* Mobile Button - Only visible on mobile, positioned below the chart */}
+              <button className="sm:hidden bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm px-6 py-3 rounded-full transition-colors duration-300 shadow-lg w-full mt-6">
+                Discover Your Earnings
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* New Earnings Calculator Section */}
-      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <section className="relative py-16 sm:py-20 lg:py-24">
         {/* Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -536,48 +559,62 @@ export default function LandingPage() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center space-y-8 sm:space-y-12">
+          <div className="flex flex-col items-center sm:items-end space-y-8 sm:space-y-12">
             {/* Header */}
-            <div className="text-center">
+            <div className="text-center w-full">
               <h2 className="font-staatliches text-3xl sm:text-4xl md:text-5xl font-bold uppercase text-white tracking-wider">
                 ESTIMATE YOUR EARNINGS
               </h2>
             </div>
             
-            {/* Two Cards Container */}
-            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full max-w-4xl">
+            {/* Cards Container - Mobile: Stacked, Desktop: Side by side */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8 w-full max-w-4xl relative">
               {/* Followers/Views Card */}
-              <div className="bg-[#1a1a1a] border border-[#333] rounded-[20px] p-6 sm:p-8 w-full sm:w-[280px] h-[180px] sm:h-[200px] flex flex-col items-center justify-center">
-                <div className="mb-4">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white mx-auto" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
+              <div className="w-[320px] h-[320px] sm:w-[280px] sm:h-[200px] bg-gradient-to-br from-black/70 to-black/40 border border-white/20 rounded-[14px] p-6 flex flex-col relative shadow-lg">
+                {/* Icon with background circle */}
+                <div className="flex items-start mb-4">
+                  <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center mr-3">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" aria-label="Followers/Views">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
                   </svg>
+                  </div>
+                  <h3 className="text-white text-base font-medium tracking-wide">Followers/Views</h3>
                 </div>
-                <h3 className="text-white text-base sm:text-lg font-medium mb-2 text-center">Followers/Views</h3>
-                <p className="text-white text-2xl sm:text-3xl font-bold">10,000</p>
+                
+                {/* Large number centered */}
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="font-bebas-neue text-[48px] md:text-[56px] font-extrabold text-[#FFC20E] leading-none">10,000</p>
+                </div>
               </div>
 
-              {/* Arrow */}
-              <div className="flex items-center rotate-90 sm:rotate-0">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-[#FFC20E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+              {/* Arrow - Centered between cards on mobile and desktop */}
+              <div className="flex items-center justify-center z-10">
+                {/* Mobile: Downward arrow, Desktop: Rightward arrow */}
+                <div className="sm:hidden w-0 h-0 border-t-[20px] border-t-[#FFC20E] border-l-[12px] border-l-transparent border-r-[12px] border-r-transparent drop-shadow-lg" aria-label="Arrow pointing down"></div>
+                <div className="hidden sm:block w-0 h-0 border-l-[20px] border-l-[#FFC20E] border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent drop-shadow-lg" aria-label="Arrow pointing to income"></div>
               </div>
 
               {/* Est. Income Card */}
-              <div className="bg-[#1a1a1a] border border-[#FFC20E] rounded-[20px] p-6 sm:p-8 w-full sm:w-[280px] h-[180px] sm:h-[200px] flex flex-col items-center justify-center">
-                <div className="mb-4">
-                  <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              <div className="w-[320px] h-[320px] sm:w-[280px] sm:h-[200px] bg-gradient-to-br from-black/70 to-black/40 border border-white/20 rounded-[14px] p-6 flex flex-col relative shadow-lg">
+                {/* Icon with background circle */}
+                <div className="flex items-start mb-4">
+                  <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center mr-3">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" aria-label="Estimated Income">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
+                  </div>
+                  <h3 className="text-white text-base font-medium tracking-wide">Est. Income</h3>
                 </div>
-                <h3 className="text-white text-base sm:text-lg font-medium mb-2 text-center">Est. Income</h3>
-                <p className="text-[#FFC20E] text-2xl sm:text-3xl font-bold">$10,000</p>
+                
+                {/* Large number centered */}
+                <div className="flex-1 flex items-center justify-center">
+                  <p className="font-bebas-neue text-[48px] md:text-[56px] font-extrabold text-[#FFC20E] leading-none">$10,000</p>
+                </div>
               </div>
             </div>
 
-            {/* Join Button */}
-            <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full transition-colors duration-300 shadow-lg">
+            {/* Join Button - Mobile: Full width, Desktop: Right aligned */}
+            <button className="w-[90%] sm:w-auto mx-auto sm:ml-auto bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-sm px-8 sm:px-10 py-3 rounded-full transition-colors duration-300 shadow-lg" aria-label="Join Now To Start Earning">
               Join Now To Start Earning
             </button>
           </div>
@@ -590,12 +627,25 @@ export default function LandingPage() {
           
           {/* Module 1 - Highlighted */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8 pb-8 border-b-2 border-[#FFC20E] gap-4 sm:gap-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
-              <span className="text-[#FFC20E] text-xl sm:text-2xl font-bold">01</span>
-              <h3 className="text-[#FFC20E] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-staatliches uppercase">MODULE 1</h3>
-              <p className="text-[#FFC20E] text-sm sm:text-base lg:text-lg ml-0 sm:ml-8">Orem Ipsum Dolor Sit Amet,<br/>Consectetur Adipiscing Elit</p>
+            {/* Mobile Layout - Image on right side of text */}
+            <div className="sm:hidden flex items-start gap-4 w-full">
+              <div className="flex flex-col space-y-2 flex-1">
+                <span className="text-[#FFC20E] text-2xl sm:text-3xl font-bold">01</span>
+                <h3 className="text-[#FFC20E] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-staatliches uppercase">MODULE 1</h3>
+                <p className="text-[#FFC20E] text-base sm:text-lg lg:text-xl">Orem Ipsum Dolor Sit Amet,<br/>Consectetur Adipiscing Elit</p>
+              </div>
+              <div className="w-32 h-24 bg-gradient-to-br from-[#444] to-[#666] rounded-lg overflow-hidden flex-shrink-0">
+                <img src="/Hero Banner Image.png" alt="Module 1" className="w-full h-full object-cover" />
+              </div>
             </div>
-            <div className="w-full sm:w-32 h-20 sm:h-20 bg-gradient-to-br from-[#444] to-[#666] rounded-lg overflow-hidden flex-shrink-0">
+            
+            {/* Desktop Layout - Original layout */}
+            <div className="hidden sm:flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-6 w-full sm:w-auto">
+              <span className="text-[#FFC20E] text-2xl sm:text-3xl font-bold">01</span>
+              <h3 className="text-[#FFC20E] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-staatliches uppercase">MODULE 1</h3>
+              <p className="text-[#FFC20E] text-base sm:text-lg lg:text-xl ml-0 sm:ml-8">Orem Ipsum Dolor Sit Amet,<br/>Consectetur Adipiscing Elit</p>
+            </div>
+            <div className="hidden sm:block w-full sm:w-48 lg:w-56 h-32 sm:h-40 lg:h-48 bg-gradient-to-br from-[#444] to-[#666] rounded-lg overflow-hidden flex-shrink-0">
               <img src="/Hero Banner Image.png" alt="Module 1" className="w-full h-full object-cover" />
             </div>
           </div>
@@ -691,57 +741,58 @@ export default function LandingPage() {
       {/* Testimonial Section - Rafaelo Quote */}
       <section className="py-16 sm:py-20 lg:py-24 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
-            {/* Background Image Container - Centered */}
-            <div className="relative w-full max-w-[1000px] h-[300px] sm:h-[400px] lg:h-[500px] rounded-[20px] overflow-hidden order-2 lg:order-1">
-              <img 
-                src="/Group 24.png" 
-                alt="Testimonial background" 
-                className="w-full h-full object-cover"
-              />
-              {/* Dark overlay for text readability */}
-              <div className="absolute inset-0 bg-black/40"></div>
-            </div>
+          <div className="relative w-full max-w-[1000px] h-[400px] sm:h-[500px] lg:h-[600px] rounded-[20px] overflow-hidden mx-auto">
+            {/* Background Image */}
+            <img 
+              src="/Group 24.png" 
+              alt="Testimonial background" 
+              className="w-full h-full object-cover"
+            />
             
-            {/* Text Content - Positioned to the left of the image container */}
-            <div className="flex-1 max-w-lg order-1 lg:order-2">
-              {/* Quote Text - Left Aligned */}
-              <div className="flex flex-col space-y-6 text-center lg:text-left">
-                {/* Quotation Marks with Text Overlay */}
-                <div className="relative mb-6">
-                  <img 
-                    src={'/1".png'} 
-                    alt="Stylized quotation marks" 
-                    className="w-[200px] sm:w-[250px] lg:w-[300px] h-[120px] sm:h-[150px] lg:h-[200px] object-contain mx-auto lg:mx-0"
-                    style={{
-                      filter: "brightness(1.5) contrast(1.3) invert(0.1)",
-                      opacity: "1.0"
-                    }}
-                  />
-                  {/* Main Quote - Positioned over the image */}
-                  <div className="absolute top-8 sm:top-12 lg:top-17 left-2 sm:left-4 right-2 sm:right-4 text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold uppercase leading-tight z-10">
-                    <p>THIS COURSE IS 100% MY SYSTEM, BUILT WITH LOVE, HUSTLE, AND REAL RESULTS</p>
+            {/* Dark overlay for text readability */}
+            <div className="absolute inset-0 bg-black/50"></div>
+            
+            {/* Text Content Overlay - Left Side */}
+            <div className="absolute inset-0 flex items-center">
+              <div className="flex-1 max-w-lg pl-8 sm:pl-12 lg:pl-16 mt-16 sm:mt-20 lg:mt-24">
+                {/* Quote Text - Left Aligned */}
+                <div className="flex flex-col space-y-6 text-left">
+                  {/* Quotation Marks with Text Overlay */}
+                  <div className="relative mb-6 -mt-32 sm:-mt-36 lg:-mt-40 -ml-12 sm:-ml-16 lg:-ml-20">
+                    <img 
+                      src={'/1".png'} 
+                      alt="Stylized quotation marks" 
+                      className="w-[200px] sm:w-[250px] lg:w-[300px] h-[120px] sm:h-[150px] lg:h-[200px] object-contain"
+                      style={{
+                        filter: "brightness(1.5) contrast(1.3) invert(0.1)",
+                        opacity: "1.0"
+                      }}
+                    />
+                    {/* Main Quote - Positioned over the image */}
+                    <div className="absolute top-32 sm:top-36 lg:top-40 left-2 sm:left-4 right-2 sm:right-4 text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold uppercase leading-tight z-10">
+                      <p>THIS COURSE IS 100% MY SYSTEM, BUILT WITH LOVE, HUSTLE, AND REAL RESULTS</p>
+                    </div>
                   </div>
+                  
+                  {/* Signature - Left Aligned */}
+                  <div 
+                    className="text-[#FFC20E] text-3xl sm:text-4xl lg:text-5xl font-bold text-left"
+                    style={{
+                      fontFamily: "'Alex Brush', 'Great Vibes', 'Dancing Script', cursive",
+                      letterSpacing: "-1px",
+                      marginTop: "80px"
+                    }}
+                  >
+                    Rafaelo
+                  </div>
+                  
+                  {/* CTA Button - Left Aligned */}
+                  <button 
+                    className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors duration-300 shadow-lg w-fit"
+                  >
+                    Start The Journey
+                  </button>
                 </div>
-                
-                {/* Signature - Different Format */}
-                <div 
-                  className="text-[#FFC20E] text-3xl sm:text-4xl lg:text-5xl font-bold text-center lg:text-left"
-                  style={{
-                    fontFamily: "'Alex Brush', 'Great Vibes', 'Dancing Script', cursive",
-                    letterSpacing: "-1px",
-                    marginTop: "80px"
-                  }}
-                >
-                  Rafaelo
-                </div>
-                
-                {/* CTA Button */}
-                <button 
-                  className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors duration-300 shadow-lg w-fit mx-auto lg:mx-0"
-                >
-                  Start The Journey
-                </button>
               </div>
             </div>
           </div>
