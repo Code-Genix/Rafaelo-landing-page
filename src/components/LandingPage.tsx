@@ -670,45 +670,58 @@ export default function LandingPage() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
             
             {/* Left Side - Phone with Hands and Messenger Icon */}
-            <div className="flex-1 flex justify-center items-center relative order-2 lg:order-1">
-              {/* Background container for phone and hands - more rectangular */}
-              <div className="relative w-full max-w-[400px] h-[250px] sm:h-[300px] bg-gray-200 rounded-[8px] flex items-center justify-center">
-                {/* Phone with hands image */}
-                <img 
-                  src="/20230430_img_4123_cr2_dxo_deepprime1 1.png" 
-                  alt="Hands holding phone" 
-                  className="w-full h-full object-contain rounded-[4px]"
-                />
-                
-                {/* Blue messenger icon floating above phone - bigger size */}
-                <div className="absolute -top-8 sm:-top-10 -left-8 sm:-left-10 w-12 h-12 sm:w-16 sm:h-16">
+            <div className="flex-1 flex justify-center items-center relative order-1 lg:order-1">
+              {/* Hands Image Container - Independent positioning */}
+              <div className="relative w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] z-20 flex items-center justify-center">
                   <img 
-                    src="/88cb0ad5-2b53-43dd-bbeb-432016899127 1.png" 
-                    alt="Messenger icon" 
-                    className="w-full h-full object-contain filter blur-sm"
+                    src="/hands-phone.png" 
+                    alt="Hands holding phone" 
+                    className="object-contain w-full h-full scale-150 -translate-y-32 -translate-x-4"
                   />
+              </div>
+              
+              {/* Main Card Container - Grey background with rounded corners and shadow - Independent positioning */}
+              <div className="absolute w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] overflow-visible z-10 -mt-32 sm:-mt-16 lg:-mt-20">
+                {/* Inner highlight for depth */}
+                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,transparent_55%,rgba(255,255,255,0.02)_100%)] rounded-[20px] pointer-events-none" />
+                
+                {/* Phone Protrusion Container - Slightly above grey card */}
+                <div className="absolute top-[-3%] md:top-[-6%] left-1/2 -translate-x-1/2 transform-none z-30">
+                  {/* This container allows the phone to protrude above the grey card */}
+                  <div className="w-full h-full">
+                    {/* Phone tip protrusion area - invisible but creates space */}
+                  </div>
                 </div>
+              </div>
+              
+              {/* Blue Messenger Overlay - Above phone with drop shadow - Independent positioning */}
+              <div className="absolute left-[5%] -top-36 md:-top-32 lg:-top-30 w-[140px] md:w-[170px] lg:w-[210px] xl:w-[280px] z-50 pointer-events-none" aria-hidden="true">
+                <img 
+                  src="/blue-messenger.png" 
+                  alt="Messenger icon" 
+                  className="w-full h-full object-contain filter drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+                />
               </div>
             </div>
 
             {/* Right Side - Text Content */}
-            <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 order-1 lg:order-2">
+            <div className="flex-1 flex flex-col items-start lg:items-start text-left space-y-4 order-2 lg:order-2">
               {/* 2000+ Members */}
-              <div className="flex flex-col items-center lg:items-start">
-                <div className="flex items-baseline space-x-2">
-                  <span className="font-staatliches text-6xl sm:text-8xl lg:text-[120px] text-[#FFC20E] font-bold leading-none">2000</span>
-                  <span className="font-staatliches text-3xl sm:text-4xl lg:text-[60px] text-[#FFC20E] font-bold leading-none">+</span>
+              <div className="flex flex-col items-start w-full">
+                <div className="flex items-baseline space-x-1">
+                  <span className="font-bold text-6xl sm:text-7xl lg:text-8xl text-[#FFC20E] leading-none">2000</span>
+                  <span className="font-bold text-3xl sm:text-4xl lg:text-5xl text-[#FFC20E] leading-none">+</span>
                 </div>
-                <span className="font-poppins text-lg sm:text-xl lg:text-[32px] text-white/80 font-medium">Members</span>
+                <span className="text-lg sm:text-xl text-white font-normal mt-1">Members</span>
               </div>
 
               {/* Join Community Button */}
-              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-semibold text-lg sm:text-xl px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors duration-300 shadow-lg">
+              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-base px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg w-full lg:w-auto">
                 Join Community
               </button>
 
               {/* Lorem Ipsum Text - Stacked vertically as in image */}
-              <div className="text-white text-lg sm:text-xl lg:text-2xl font-bold uppercase tracking-wider leading-tight">
+              <div className="text-white text-base sm:text-lg font-bold uppercase tracking-wide leading-tight mt-6">
                 <p>LOREM IPSUM</p>
                 <p>DOLOR SIT AMET,</p>
                 <p>CONSECTETUR</p>
@@ -717,11 +730,30 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Bottom Section - Main Title and Description */}
-          <div className="mt-12 sm:mt-16 lg:mt-20 flex flex-col lg:flex-row items-center lg:items-end justify-between gap-8 lg:gap-12">
+          {/* Mobile-only bottom section - Community of Hustlers and description */}
+          <div className="lg:hidden mt-8 flex flex-col items-start text-left space-y-6">
+            {/* Community of Hustlers Title */}
+            <div className="flex-1 text-left">
+              <h2 className="font-bold text-3xl sm:text-4xl text-[#FFC20E] leading-none uppercase">
+                COMMUNITY
+                <br />
+                OF HUSTLERS
+              </h2>
+            </div>
+
+            {/* Description */}
+            <div className="flex-1">
+              <p className="text-white text-base sm:text-lg leading-relaxed text-left">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </div>
+          </div>
+
+          {/* Bottom Section - Main Title and Description - Desktop Only */}
+          <div className="hidden lg:flex mt-8 sm:mt-10 lg:mt-12 flex-col lg:flex-row items-start lg:items-end justify-between gap-8 lg:gap-12">
             {/* Left - Main Title */}
-            <div className="flex-1 text-center lg:text-left">
-              <h2 className="font-staatliches text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[80px] text-[#FFC20E] font-bold leading-none uppercase">
+            <div className="flex-1 text-left -ml-2 sm:-ml-4 lg:-ml-6">
+              <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#FFC20E] leading-none uppercase">
                 COMMUNITY
                 <br />
                 OF HUSTLERS
@@ -729,8 +761,8 @@ export default function LandingPage() {
             </div>
 
             {/* Right - Description */}
-            <div className="flex-1 lg:pl-16">
-              <p className="text-white text-base sm:text-lg leading-relaxed text-center lg:text-left">
+            <div className="flex-1 lg:pl-16 -mt-20 sm:-mt-24 lg:-mt-28 -ml-16 sm:-ml-20 lg:-ml-24">
+              <p className="text-white text-base sm:text-lg lg:text-xl leading-relaxed text-left">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
             </div>
@@ -841,86 +873,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16 sm:py-20 lg:py-24 bg-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Title */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="font-dm-sans text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white font-normal">
-              Simple, Transparent, and Scalable Pricing
-            </h2>
-          </div>
-          
-          {/* Pricing Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-            {/* Starter Plan */}
-            <div className="bg-[#070707] h-[280px] sm:h-[292px] relative rounded-[20px] hover:scale-105 transition-transform cursor-pointer p-6">
-              <div className="border border-[#ffeff1] border-solid inset-0 pointer-events-none rounded-[20px] absolute" />
-              
-              <div className="mb-6">
-                <div className="border border-solid border-white rounded-full px-4 py-2 w-fit">
-                  <p className="font-dm-sans text-sm sm:text-base text-white">Start with Starter</p>
-                </div>
-              </div>
-              
-              <div className="mb-8">
-                <p className="font-dm-sans text-4xl sm:text-5xl text-white font-normal">
-                  <span>$99</span>
-                  <span className="text-lg sm:text-xl"> / project</span>
-                </p>
-              </div>
-              
-              <button className="bg-[#121212] hover:bg-[#1a1a1a] text-white font-medium text-sm sm:text-base px-6 py-3 rounded-lg transition-colors w-full">
-                Get This Plan
-              </button>
-            </div>
-
-            {/* Growth Plan - Featured */}
-            <div className="bg-[#730002] h-[280px] sm:h-[292px] relative rounded-[20px] hover:scale-105 transition-transform cursor-pointer p-6">
-              <div className="border border-[#ffeff1] border-solid inset-0 pointer-events-none rounded-[20px] absolute" />
-              
-              <div className="mb-6">
-                <div className="border border-solid border-white rounded-full px-4 py-2 w-fit">
-                  <p className="font-dm-sans text-sm sm:text-base text-white">Choose Growth</p>
-                </div>
-              </div>
-              
-              <div className="mb-8">
-                <p className="font-dm-sans text-4xl sm:text-5xl text-white font-normal">
-                  <span>$299</span>
-                  <span className="text-lg sm:text-xl"> / project</span>
-                </p>
-              </div>
-              
-              <button className="bg-white hover:bg-gray-100 text-[#121212] font-medium text-sm sm:text-base px-6 py-3 rounded-lg transition-colors w-full">
-                Get This Plan
-              </button>
-            </div>
-
-            {/* Pro Plan */}
-            <div className="bg-[#070707] h-[280px] sm:h-[292px] relative rounded-[20px] hover:scale-105 transition-transform cursor-pointer p-6 md:col-span-2 lg:col-span-1">
-              <div className="border border-[#ffeff1] border-solid inset-0 pointer-events-none rounded-[20px] absolute" />
-              
-              <div className="mb-6">
-                <div className="border border-solid border-white rounded-full px-4 py-2 w-fit">
-                  <p className="font-dm-sans text-sm sm:text-base text-white">Start with Pro</p>
-                </div>
-              </div>
-              
-              <div className="mb-8">
-                <p className="font-dm-sans text-4xl sm:text-5xl text-white font-normal">
-                  <span>$499</span>
-                  <span className="text-lg sm:text-xl"> / project</span>
-                </p>
-              </div>
-              
-              <button className="bg-[#121212] hover:bg-[#1a1a1a] text-white font-medium text-sm sm:text-base px-6 py-3 rounded-lg transition-colors w-full">
-                Get This Plan
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
 
     </div>
   );
