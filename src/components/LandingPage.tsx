@@ -4,9 +4,23 @@ import { useState, useEffect } from "react";
 // Navigation Component
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 w-full">
+    <nav className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-black/90 backdrop-blur-sm shadow-lg' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center justify-between py-4 relative">
           
@@ -38,11 +52,13 @@ function Navigation() {
           {/* Right Side - About/Benefits (iPad/Web) and Mobile Menu Button */}
           <div className="flex items-center space-x-4">
             {/* About me / Benefits - Only on iPad and larger screens */}
-            <div className="hidden md:block bg-[#070707] px-4 py-2 rounded-full">
-              <div className="flex space-x-8">
+            <div className="hidden md:flex items-center space-x-2 sm:space-x-4">
+              <button className="bg-[#070707] px-4 py-2 rounded-full hover:bg-[#1a1a1a] transition-colors">
                 <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
+              </button>
+              <button className="bg-[#070707] px-4 py-2 rounded-full hover:bg-[#1a1a1a] transition-colors">
                 <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">Benefits</a>
-              </div>
+              </button>
             </div>
 
             {/* Mobile menu button - Only on mobile */}
@@ -434,12 +450,61 @@ function FrameworkSection() {
   );
 }
 
+// Testimonials Section Component
+function TestimonialsSection() {
+  return (
+    <section className="w-full py-6 sm:py-8 overflow-hidden bg-black">
+      <div className="relative w-full flex items-center" style={{ height: '100px' }}>
+        {/* Animated scrolling container */}
+        <div 
+          className="flex absolute left-0 animate-scroll"
+          style={{
+            width: 'max-content',
+            animation: 'scroll 40s linear infinite'
+          }}
+        >
+          {/* Duplicate images for seamless infinite scroll */}
+          <img 
+            src="/Group 4.png" 
+            alt="Customer testimonials" 
+            className="h-[80px] sm:h-[100px] w-auto object-contain"
+          />
+          <img 
+            src="/Group 4.png" 
+            alt="Customer testimonials" 
+            className="h-[80px] sm:h-[100px] w-auto object-contain"
+          />
+          <img 
+            src="/Group 4.png" 
+            alt="Customer testimonials" 
+            className="h-[80px] sm:h-[100px] w-auto object-contain"
+          />
+        </div>
+      </div>
+      
+      <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 // Main Landing Page Component
 export default function LandingPage() {
   return (
     <div className="bg-black min-h-screen">
       {/* Hero Section */}
       <HeroSection />
+      
+      {/* Testimonials Section */}
+      <TestimonialsSection />
       
       {/* Framework Section */}
       <FrameworkSection />
@@ -499,39 +564,47 @@ export default function LandingPage() {
               {/* Follower Tiers */}
               <div className="space-y-3 sm:space-y-4">
                 {/* 10K Tier */}
-                <div className="flex items-center justify-between bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                  <span className="text-white text-base sm:text-lg font-bold">10K</span>
-                  <svg className="w-4 h-4 text-white mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold">$1,000 / MONTH</span>
+                <div className="flex items-center bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                  <span className="text-white text-base sm:text-lg font-bold w-16">10K</span>
+                  <div className="flex-1 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold text-right flex-1">$1,000 / MONTH</span>
                 </div>
                 
                 {/* 100K Tier */}
-                <div className="flex items-center justify-between bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                  <span className="text-white text-base sm:text-lg font-bold">100K</span>
-                  <svg className="w-4 h-4 text-white mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold">$5,000 / MONTH</span>
+                <div className="flex items-center bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                  <span className="text-white text-base sm:text-lg font-bold w-16">100K</span>
+                  <div className="flex-1 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold text-right flex-1">$5,000 / MONTH</span>
                 </div>
                 
                 {/* 1M Tier */}
-                <div className="flex items-center justify-between bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                  <span className="text-white text-base sm:text-lg font-bold">1M</span>
-                  <svg className="w-4 h-4 text-white mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold">$20,000 / MONTH</span>
+                <div className="flex items-center bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                  <span className="text-white text-base sm:text-lg font-bold w-16">1M</span>
+                  <div className="flex-1 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold text-right flex-1">$20,000 / MONTH</span>
                 </div>
                 
                 {/* 8M Tier */}
-                <div className="flex items-center justify-between bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
-                  <span className="text-white text-base sm:text-lg font-bold">8M</span>
-                  <svg className="w-4 h-4 text-white mx-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold">$100,000+ / MONTH</span>
+                <div className="flex items-center bg-black/20 backdrop-blur-sm rounded-lg p-3 sm:p-4">
+                  <span className="text-white text-base sm:text-lg font-bold w-16">8M</span>
+                  <div className="flex-1 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                  <span className="text-[#FFC20E] text-base sm:text-lg font-bold text-right flex-1">$100,000+ / MONTH</span>
                 </div>
               </div>
 
@@ -676,12 +749,12 @@ export default function LandingPage() {
                   <img 
                     src="/hands-phone.png" 
                     alt="Hands holding phone" 
-                    className="object-contain w-full h-full scale-150 -translate-y-32 -translate-x-4"
+                    className="object-contain w-full h-full scale-125 sm:scale-150 lg:scale-150 -translate-y-20 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
                   />
               </div>
               
               {/* Main Card Container - Grey background with rounded corners and shadow - Independent positioning */}
-              <div className="absolute w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] overflow-visible z-10 -mt-32 sm:-mt-16 lg:-mt-20">
+              <div className="absolute w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] overflow-visible z-10 -mt-20 sm:-mt-4 lg:-mt-9">
                 {/* Inner highlight for depth */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,transparent_55%,rgba(255,255,255,0.02)_100%)] rounded-[20px] pointer-events-none" />
                 
@@ -705,7 +778,7 @@ export default function LandingPage() {
             </div>
 
             {/* Right Side - Text Content */}
-            <div className="flex-1 flex flex-col items-start lg:items-start text-left space-y-4 order-2 lg:order-2">
+            <div className="w-full lg:flex-1 flex flex-col items-start lg:items-start text-left space-y-4 order-2 lg:order-2">
               {/* 2000+ Members */}
               <div className="flex flex-col items-start w-full">
                 <div className="flex items-baseline space-x-1">
@@ -716,7 +789,7 @@ export default function LandingPage() {
               </div>
 
               {/* Join Community Button */}
-              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-base px-6 py-3 rounded-lg transition-colors duration-300 shadow-lg w-full lg:w-auto">
+              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm px-5 py-2.5 rounded-full transition-colors duration-300 shadow-lg w-auto mx-auto lg:mx-0 lg:px-6 lg:py-3 lg:text-base lg:rounded-lg">
                 Join Community
               </button>
 
@@ -731,10 +804,10 @@ export default function LandingPage() {
           </div>
 
           {/* Mobile-only bottom section - Community of Hustlers and description */}
-          <div className="lg:hidden mt-8 flex flex-col items-start text-left space-y-6">
+          <div className="lg:hidden mt-12 flex flex-col items-start text-left space-y-6">
             {/* Community of Hustlers Title */}
-            <div className="flex-1 text-left">
-              <h2 className="font-bold text-3xl sm:text-4xl text-[#FFC20E] leading-none uppercase">
+            <div className="text-left w-full">
+              <h2 className="font-bold text-4xl sm:text-5xl text-[#FFC20E] leading-tight uppercase tracking-wide">
                 COMMUNITY
                 <br />
                 OF HUSTLERS
@@ -742,7 +815,7 @@ export default function LandingPage() {
             </div>
 
             {/* Description */}
-            <div className="flex-1">
+            <div className="w-full">
               <p className="text-white text-base sm:text-lg leading-relaxed text-left">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.
               </p>
