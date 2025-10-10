@@ -746,7 +746,7 @@ export default function LandingPage() {
             <div className="flex-1 flex justify-center items-center relative order-1 lg:order-1">
               
               {/* Grey Background Box - Completely Independent */}
-              <div className="absolute w-[350px] sm:w-[500px] lg:w-[500px] h-[220px] sm:h-[240px] lg:h-[420px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] z-10 -mt-28 sm:-mt-4 lg:-mt-9 -ml-8 sm:ml-0 lg:ml-0">
+              <div className="absolute w-[350px] sm:w-[500px] lg:w-[450px] h-[220px] sm:h-[240px] lg:h-[280px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] z-10 -mt-28 sm:-mt-4 lg:-mt-9 -ml-8 sm:ml-0 lg:-ml-8">
                 {/* Inner highlight for depth */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,transparent_55%,rgba(255,255,255,0.02)_100%)] rounded-[20px] pointer-events-none" />
               </div>
@@ -756,7 +756,7 @@ export default function LandingPage() {
                 <img 
                   src="/hands-phone.png" 
                   alt="Hands holding phone" 
-                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
+                  className="w-[300px] sm:w-[400px] lg:w-[400px] h-auto object-contain scale-125 sm:scale-150 lg:scale-125 -translate-y-28 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
                 />
               </div>
               
