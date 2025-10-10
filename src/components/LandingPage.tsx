@@ -744,31 +744,24 @@ export default function LandingPage() {
             
             {/* Left Side - Phone with Hands and Messenger Icon */}
             <div className="flex-1 flex justify-center items-center relative order-1 lg:order-1">
-              {/* Hands Image Container - Independent positioning */}
-              <div className="relative w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] z-20 flex items-center justify-center">
-                  <img 
-                    src="/hands-phone.png" 
-                    alt="Hands holding phone" 
-                    className="object-contain w-full h-full scale-125 sm:scale-150 lg:scale-150 -translate-y-20 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
-                  />
-              </div>
               
-              {/* Main Card Container - Grey background with rounded corners and shadow - Independent positioning */}
-              <div className="absolute w-full max-w-[500px] h-[280px] md:h-[240px] lg:h-[320px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] overflow-visible z-10 -mt-20 sm:-mt-4 lg:-mt-9">
+              {/* Grey Background Box - Completely Independent */}
+              <div className="absolute w-[350px] sm:w-[500px] lg:w-[500px] h-[220px] sm:h-[240px] lg:h-[420px] bg-[#d9d9d9] rounded-[20px] drop-shadow-[0_28px_80px_rgba(0,0,0,0.6)] z-10 -mt-28 sm:-mt-4 lg:-mt-9 -ml-8 sm:ml-0 lg:ml-0">
                 {/* Inner highlight for depth */}
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,transparent_55%,rgba(255,255,255,0.02)_100%)] rounded-[20px] pointer-events-none" />
-                
-                {/* Phone Protrusion Container - Slightly above grey card */}
-                <div className="absolute top-[-3%] md:top-[-6%] left-1/2 -translate-x-1/2 transform-none z-30">
-                  {/* This container allows the phone to protrude above the grey card */}
-                  <div className="w-full h-full">
-                    {/* Phone tip protrusion area - invisible but creates space */}
-                  </div>
-                </div>
+              </div>
+              
+              {/* Hands-Phone Image - Completely Independent */}
+              <div className="relative z-20 flex items-center justify-center">
+                <img 
+                  src="/hands-phone.png" 
+                  alt="Hands holding phone" 
+                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
+                />
               </div>
               
               {/* Blue Messenger Overlay - Above phone with drop shadow - Independent positioning */}
-              <div className="absolute left-[5%] -top-36 md:-top-32 lg:-top-30 w-[140px] md:w-[170px] lg:w-[210px] xl:w-[280px] z-50 pointer-events-none" aria-hidden="true">
+              <div className="absolute left-[-15%] sm:left-[5%] lg:left-[5%] -top-36 sm:-top-32 lg:-top-30 w-[220px] sm:w-[170px] lg:w-[210px] xl:w-[280px] z-50 pointer-events-none" aria-hidden="true">
                 <img 
                   src="/blue-messenger.png" 
                   alt="Messenger icon" 
@@ -780,7 +773,7 @@ export default function LandingPage() {
             {/* Right Side - Text Content */}
             <div className="w-full lg:flex-1 flex flex-col items-start lg:items-start text-left space-y-4 order-2 lg:order-2">
               {/* 2000+ Members */}
-              <div className="flex flex-col items-start w-full">
+              <div className="flex flex-col items-end sm:items-start lg:items-start w-full -mt-24 sm:mt-0 lg:mt-0">
                 <div className="flex items-baseline space-x-1">
                   <span className="font-bold text-6xl sm:text-7xl lg:text-8xl text-[#FFC20E] leading-none">2000</span>
                   <span className="font-bold text-3xl sm:text-4xl lg:text-5xl text-[#FFC20E] leading-none">+</span>
