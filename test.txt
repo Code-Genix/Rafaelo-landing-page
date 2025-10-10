@@ -1,4 +1,0 @@
-Hello! This is a test file.
-If you can see this content, then file opening is working.
-This is line 3.
-This is line 4.

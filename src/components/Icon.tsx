@@ -73,4 +73,3 @@ export const SVG: React.FC<IconProps & { children: React.ReactNode }> = ({
 };
 
 export default Icon;
-

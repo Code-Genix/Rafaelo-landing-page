@@ -1,5 +1,5 @@
 import svgPaths from "../imports/svg-gfdvud67i5";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 // Navigation Component
 function Navigation() {
@@ -243,7 +243,7 @@ function FrameworkSection() {
   const [currentSlide, setCurrentSlide] = useState(1); // 0 = left, 1 = center, 2 = right
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const goToSlide = (slideIndex: number) => {
+  const goToSlide = useCallback((slideIndex: number) => {
     if (isTransitioning) return;
     
     setIsTransitioning(true);
@@ -253,17 +253,17 @@ function FrameworkSection() {
     setTimeout(() => {
       setIsTransitioning(false);
     }, 300);
-  };
+  }, [isTransitioning]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     const newSlide = currentSlide === 0 ? 2 : currentSlide - 1;
     goToSlide(newSlide);
-  };
+  }, [currentSlide, goToSlide]);
 
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     const newSlide = currentSlide === 2 ? 0 : currentSlide + 1;
     goToSlide(newSlide);
-  };
+  }, [currentSlide, goToSlide]);
 
   // Keyboard navigation
   useEffect(() => {
@@ -277,7 +277,7 @@ function FrameworkSection() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentSlide, isTransitioning]);
+  }, [goToPrevious, goToNext]);
 
   return (
       <section className="py-16 sm:py-20 lg:py-24">
