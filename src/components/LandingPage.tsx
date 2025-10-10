@@ -756,7 +756,7 @@ export default function LandingPage() {
                 <img 
                   src="/hands-phone.png" 
                   alt="Hands holding phone" 
-                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28.... sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
+                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
                 />
               </div>
               
