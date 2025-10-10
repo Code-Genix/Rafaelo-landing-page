@@ -756,7 +756,7 @@ export default function LandingPage() {
                 <img 
                   src="/hands-phone.png" 
                   alt="Hands holding phone" 
-                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28 sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
+                  className="w-[300px] sm:w-[400px] lg:w-[500px] h-auto object-contain scale-125 sm:scale-150 lg:scale-150 -translate-y-28.... sm:-translate-y-24 lg:-translate-y-24 -translate-x-4"
                 />
               </div>
               
@@ -782,7 +782,7 @@ export default function LandingPage() {
               </div>
 
               {/* Join Community Button */}
-              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-sm px-5 py-2.5 rounded-full transition-colors duration-300 shadow-lg w-auto mx-auto lg:mx-0 lg:px-6 lg:py-3 lg:text-base lg:rounded-lg">
+              <button className="bg-[#FFC20E] hover:bg-[#e6a20b] text-black font-medium text-base px-6 py-3 sm:text-sm sm:px-5 sm:py-2.5 rounded-full transition-colors duration-300 shadow-lg w-auto mx-auto lg:mx-0 lg:px-6 lg:py-3 lg:text-base lg:rounded-lg">
                 Join Community
               </button>
 
