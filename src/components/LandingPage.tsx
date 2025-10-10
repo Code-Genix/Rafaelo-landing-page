@@ -82,9 +82,9 @@ function Navigation() {
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
           <div className="md:hidden bg-[#070707] rounded-lg mt-2 p-4">
-            <div className="flex flex-col space-y-4">
-              <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">About me</a>
-              <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium">Benefits</a>
+            <div className="flex flex-col items-center space-y-4">
+              <a href="#about" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium text-center">About me</a>
+              <a href="#benefits" className="text-[#c9c9c9] hover:text-white transition-colors text-sm font-medium text-center">Benefits</a>
             </div>
           </div>
         )}
@@ -761,7 +761,7 @@ export default function LandingPage() {
               </div>
               
               {/* Blue Messenger Overlay - Above phone with drop shadow - Independent positioning */}
-              <div className="absolute left-[-15%] sm:left-[5%] lg:left-[5%] -top-36 sm:-top-32 lg:-top-30 w-[220px] sm:w-[170px] lg:w-[210px] xl:w-[280px] z-50 pointer-events-none" aria-hidden="true">
+              <div className="absolute left-[-25%] sm:left-[5%] lg:left-[5%] -top-36 sm:-top-32 lg:-top-30 w-[260px] sm:w-[170px] lg:w-[210px] xl:w-[280px] z-50 pointer-events-none" aria-hidden="true">
                 <img 
                   src="/blue-messenger.png" 
                   alt="Messenger icon" 
@@ -786,8 +786,29 @@ export default function LandingPage() {
                 Join Community
               </button>
 
-              {/* Lorem Ipsum Text - Stacked vertically as in image */}
-              <div className="text-white text-base sm:text-lg font-bold uppercase tracking-wide leading-tight mt-6">
+              {/* Mobile-only section below Join Community button */}
+              <div className="lg:hidden mt-8 flex flex-col items-start text-left space-y-6">
+                {/* Lorem Ipsum Heading */}
+                <div className="text-[#c9c9c9] text-lg font-bold uppercase tracking-wide leading-tight">
+                  <p>LOREM IPSUM DOLOR SIT</p>
+                  <p>AMET, CONSECTETUR</p>
+                  <p>ADIPISCING ELIT</p>
+                </div>
+
+                {/* Community of Hustlers Title */}
+                <div className="text-[#FFC20E] text-4xl font-bold uppercase leading-tight">
+                  <p>COMMUNITY</p>
+                  <p>OF HUSTLERS</p>
+                </div>
+
+                {/* Description Paragraph */}
+                <div className="text-[#c9c9c9] text-base leading-relaxed">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              </div>
+
+              {/* Desktop Lorem Ipsum Text - Hidden on mobile */}
+              <div className="hidden lg:block text-white text-base sm:text-lg font-bold uppercase tracking-wide leading-tight mt-6">
                 <p>LOREM IPSUM</p>
                 <p>DOLOR SIT AMET,</p>
                 <p>CONSECTETUR</p>
@@ -796,24 +817,6 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Mobile-only bottom section - Community of Hustlers and description */}
-          <div className="lg:hidden mt-12 flex flex-col items-start text-left space-y-6">
-            {/* Community of Hustlers Title */}
-            <div className="text-left w-full">
-              <h2 className="font-bold text-4xl sm:text-5xl text-[#FFC20E] leading-tight uppercase tracking-wide">
-                COMMUNITY
-                <br />
-                OF HUSTLERS
-              </h2>
-            </div>
-
-            {/* Description */}
-            <div className="w-full">
-              <p className="text-white text-base sm:text-lg leading-relaxed text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elitorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
-            </div>
-          </div>
 
           {/* Bottom Section - Main Title and Description - Desktop Only */}
           <div className="hidden lg:flex mt-8 sm:mt-10 lg:mt-12 flex-col lg:flex-row items-start lg:items-end justify-between gap-8 lg:gap-12">
